@@ -1,0 +1,12 @@
+.page-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 6rem 1.5rem;
+  &__main {
+    width: 65%;
+  }
+  &__aside {
+    width: 30%;
+  }
+}

@@ -1,43 +1,53 @@
 <template>
   <div class="home">
-    <div class="home-intro">
-      <img src="/images/shop-intro.jpg" alt="">
-    </div>
-    <div class="container">
-      <div class="last-products">
-        <h2 class="title">Last products</h2>
-        <ProductLoop :products="products"/>
+    <Intro />
+    <section-header title="Обо мне" />
+    <About />
+    <section-header title="Последние посты" />
+    <div class="last-posts">
+      <blogs-component :count="3" align="center" />
+      <div class="last-posts__btn">
+        <btn>
+          <router-link to="/blog">Посмотреть все посты</router-link>
+        </btn>
       </div>
-      <AboutUs/>
+    </div>
+    <section-header title="Последние работы порртфолио" />
+    <div class="last-portfolio">
+      <PortfoliosComponent :count="3" />
     </div>
   </div>
 </template>
+
 <script>
-import ProductLoop from "@/front/product/ProductLoop";
-import AboutUs from "@/front/AboutUs";
+import BlogsComponent from "@/elements/BlogsComponent";
+import PortfoliosComponent from "@/elements/PortfoliosComponent";
+import About from "@/sections/About";
+import Intro from "@/sections/Intro";
+import Btn from "@/ui/Btn";
+import SectionHeader from "@/ui/SectionHeader";
 
 export default {
-  name: "IndexPage",
-  data() {
-    return {
-      products: []
-    }
+  components: {
+    PortfoliosComponent,
+    Btn,
+    BlogsComponent,
+    SectionHeader,
+    About,
+    Intro,
   },
-  components: {AboutUs, ProductLoop},
-  methods: {
-    getProducts() {
-      this.$axios.get("/last-products").then((response) => {
-        this.products = response.data.data;
-      });
-    }
-  },
-  computed: {
-    server_url() {
-      return this.$store.state.server_url;
-    }
-  },
-  created() {
-    this.getProducts();
-  }
+  layout: "default",
 };
 </script>
+<style lang="scss">
+.last-posts {
+  padding: 10rem;
+  &__btn {
+    margin-top: 6rem;
+    text-align: center;
+  }
+}
+.last-portfolio {
+  padding: 10rem;
+}
+</style>

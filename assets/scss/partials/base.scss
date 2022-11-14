@@ -5,17 +5,19 @@ html {
   }
 }
 * {
-  outline: none;
+  &:focus {
+    outline: none !important;
+  }
 }
 body {
   position: relative;
   margin: 0;
   font-family: Roboto, sans-serif;
-  font-size: 1.6rem;
-  color: $text-color;
-  background: #f3f5f9;
+  font-size: 1.8rem;
+  color: white;
+  background: $default;
   &::after {
-    content: "";
+    content: '';
     position: absolute;
     top: 0;
     left: 50%;
@@ -30,11 +32,6 @@ body {
       border-bottom: 1px solid #eee;
     }
   }
-}
-.wrapper {
-  margin: 0 auto;
-  max-width: 1920px;
-  overflow: hidden;
 }
 * {
   box-sizing: border-box;
@@ -56,8 +53,10 @@ ul {
   @include reset-list;
 }
 p {
-  margin: 0;
+  margin: 0 0 4rem;
   padding: 0;
+  line-height: 1.5;
+  color: #ccc;
   @media screen and (max-width: 1200px) {
     font-size: 2.2rem;
   }
@@ -68,9 +67,12 @@ p {
 .container {
   margin: 0 auto;
   padding: 0 15px;
-  max-width: 1326px;
+  width: 1326px;
+  @media screen and (max-width: 1340px) {
+    width: 100%;
+  }
 }
-input[type="submit"]:disabled {
+input[type='submit']:disabled {
   cursor: not-allowed !important;
   opacity: 0.6 !important;
 }
@@ -91,55 +93,25 @@ a {
     }
   }
 }
-// * {
-//   user-select: none;
-//   /* supported by Chrome and Opera */
-//   // -webkit-user-select: none; /* Safari */
-//   -khtml-user-select: none;
-//   /* Konqueror HTML */
-//   -moz-user-select: none;
-//   /* Firefox */
-//   -ms-user-select: none;
-//   /* Internet Explorer/Edge */
-// }
-// .wrapper {
-//     width: 100%;
-//     min-height: 100%;
-//     display: flex;
-//     flex-direction: column;
-//     overflow: hidden;
-//     // Прижимаем footer
-//     > main {
-//         flex: 1 1 auto;
-//     }
-//     // Фикс для слайдеров
-//     > * {
-//         min-width: 0;
-//     }
-// }
-.text-error {
-  padding-top: 0.5rem;
-  font-size: 1.4rem;
-  color: red;
+.disable-select {
+  user-select: none; /* supported by Chrome and Opera */
+  // -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
 }
-.alert {
-  display: table;
-  margin: 2rem 0;
-  padding: 1rem 2rem;
-  border: 1px solid red;
+*:focus {
+  outline: 1px solid $accent;
 }
-.error-block {
-  display: table;
-  margin: 2rem 0;
-  padding: 1rem 2rem;
-  font-weight: bold;
-  color: white;
-  background: red;
-  border: 1px solid red;
+.title {
+  font-size: 5rem;
 }
-//.page-enter-active, .page-leave-active {
-//  transition: all 0.4s;
-//}
-//.page-enter, .page-leave-active {
-//  opacity: 0;
-//}
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.2s ease-in-out;
+}
+.page-enter,
+.page-leave-to {
+  opacity: 0;
+}
+

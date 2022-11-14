@@ -1,0 +1,71 @@
+@keyframes headerFade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.main-header {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border-top: 1rem solid #778492;
+  box-shadow: 0 2px 8px -4px rgba(0, 0, 0, 0.2);
+  .container {
+    position: relative;
+  }
+  &__wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3rem 0;
+    @media screen and (max-width: 768px) {
+      flex-wrap: wrap;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+  .logo {
+    position: relative;
+    margin-right: 3rem;
+    width: 18rem;
+    height: 18rem;
+    z-index: 2;
+    border-radius: 50%;
+    overflow: hidden;
+    transition: all .4s;
+    @media screen and (max-width: 768px) {
+      margin-right: 0;
+    }
+    &:hover {
+      filter: blur(0.1rem) grayscale(1);
+      transform: scale(0.9);
+    }
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  &__socials {
+    @media screen and (max-width: 768px) {
+      margin-bottom: 3rem;
+      justify-content: center;
+    }
+  }
+  &__profile {
+    margin-right: auto;
+    @media screen and (max-width: 768px) {
+      margin-right: 0;
+    }
+  }
+  .btn {
+    margin-left: 1rem;
+  }
+}

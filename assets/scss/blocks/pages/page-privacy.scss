@@ -1,0 +1,43 @@
+.page-privacy {
+  padding: 0 0 4rem;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-top: 6rem;
+    margin-bottom: 3rem;
+  }
+  .red {
+    display: inline-block;
+    color: red;
+    border: 1px solid red;
+  }
+  a {
+    font-weight: bold;
+    text-decoration: underline;
+  }
+}
+.page-privacy  table {
+    margin-bottom: 30px;
+    border-collapse: collapse;
+}
+
+.page-privacy  th {
+  color: white;
+  background-color: #444;
+}
+.page-privacy th,
+ .page-privacy   td {
+      padding: 1rem 2rem;
+      border: 1px solid #aaa;
+    }
+@media screen and (max-width: 750px) {
+	.page-privacy .overflow-inner {
+		overflow-x: auto;
+	}
+	.page-privacy table {
+		width: 750px;
+	}
+}

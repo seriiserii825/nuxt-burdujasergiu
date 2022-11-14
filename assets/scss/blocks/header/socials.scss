@@ -1,0 +1,22 @@
+.socials {
+  display: flex;
+  align-items: center;
+  a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 3.6rem;
+    height: 3.6rem;
+    background-color: darken($default, 20%);
+    border-radius: 50%;
+    transition: all .4s;
+    &:hover {
+      background: $accent;
+    }
+    svg {
+      width: 2rem;
+      height: auto;
+      fill: white;
+    }
+  }
+}

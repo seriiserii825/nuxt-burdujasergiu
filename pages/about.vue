@@ -1,25 +1,22 @@
 <template>
   <div class="page-about">
-    <div class="page-intro">
-      <img :src="`${server_url}/images/about-us-page.jpg`" alt="">
-    </div>
-    <div class="container">
-      <AboutUs/>
-    </div>
+    <Skills/>
+    <section-header title="Обо мне"></section-header>
+    <About :show_btn="false"/>
   </div>
 </template>
 <script>
-import AboutUs from "@/front/AboutUs";
+import Skills from "@/sections/Skills";
+import SectionHeader from "@/ui/SectionHeader";
+import About from "@/sections/About";
 
 export default {
-  components: {AboutUs},
-  layout: 'default',
-  computed: {
-    server_url() {
-      return this.$store.state.server_url;
-    }
-  }
+  components: {Skills, SectionHeader, About},
+  layout: 'default'
 }
 </script>
 <style lang="scss">
+.page-about {
+}
 </style>
+

@@ -1,0 +1,83 @@
+.search {
+  &__body {
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: 4rem;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    z-index: 1000;
+  }
+  &__btn {
+    position: fixed;
+    top: 2rem;
+    left: 1rem;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    width: 6rem;
+    height: 6rem;
+    background-color: $contrast;
+    border-radius: 50%;
+    &::before {
+      display: none;
+    }
+    svg {
+      position: relative;
+      margin: 0;
+      width: 3rem;
+      height: 3rem;
+      fill: white;
+      stroke: white;
+      z-index: 10;
+    }
+  }
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 0;
+    border-bottom: 1px solid #eee;
+    button {
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      svg {
+        width: 3rem;
+        fill: red;
+      }
+    }
+    input {
+      width: 80%;
+      height: 6rem;
+      font-size: 2rem;
+      text-indent: 2rem;
+      border: 1px solid #ccc;
+    }
+  }
+  &__list {
+    padding: 3rem 0;
+    a {
+      display: block;
+      padding: 2rem 3rem;
+      border-bottom: 1px solid #ccc;
+      transition: all .2s;
+      &:hover,
+      &:focus {
+        color: white;
+        background-color: $accent;
+      }
+    }
+  }
+}
+.item-enter-active,
+.item-leave-active {
+  transition: opacity .4s;
+}
+.item-enter,
+.item-leave-to {
+  opacity: 0;
+}
