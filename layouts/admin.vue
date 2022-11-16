@@ -1,23 +1,23 @@
 <template>
-  <div class="wrapper">
+  <div class="wrapper" v-if="was_loaded">
     <div class="admin-layout">
       <div
-          :class="{ 'admin-layout__sidebar--hidden': !isVisibleSidebar }"
-          class="admin-layout__sidebar"
+        :class="{ 'admin-layout__sidebar--hidden': !isVisibleSidebar }"
+        class="admin-layout__sidebar"
       >
-        <admin-sidebar/>
+        <admin-sidebar />
       </div>
       <div
-          class="admin-layout__body"
-          :class="{ 'admin-layout__body--full': !isVisibleSidebar }"
+        class="admin-layout__body"
+        :class="{ 'admin-layout__body--full': !isVisibleSidebar }"
       >
-        <admin-header/>
+        <admin-header />
         <div class="admin-layout__main">
-          <Nuxt/>
+          <Nuxt />
         </div>
       </div>
     </div>
-    <add-media v-if="isVisibleAddMedia"/>
+    <add-media v-if="isVisibleAddMedia" />
   </div>
 </template>
 <script>
@@ -26,7 +26,12 @@ import AdminSidebar from "../components/admin/layouts/AdminSidebar.vue";
 import AddMedia from "../components/admin/media/AddMedia.vue";
 
 export default {
-  components: {AdminSidebar, AdminHeader, AddMedia},
+  data() {
+    return {
+      was_loaded: false,
+    };
+  },
+  components: { AdminSidebar, AdminHeader, AddMedia },
   computed: {
     isVisibleSidebar() {
       return this.$store.state.isVisibleSidebar;
@@ -36,12 +41,14 @@ export default {
     },
   },
   created() {
-    if (this.$auth && this.$auth.user && this.$auth.user.role[0].name === 'admin') {
-      console.log('welcome admin');
+    if (this.$auth && this.$auth.user) {
+      setTimeout(() => {
+        this.was_loaded = true;
+      }, 300);
     } else {
-      this.$router.push('/');
+      this.$router.push("/");
     }
-  }
+  },
 };
 </script>
 <style lang="scss"></style>

@@ -1,7 +1,7 @@
 .admin-sidebar {
   min-height: 100vh;
-  color: #ccc;
-  background: $accent;
+  color: white;
+  background: darken($default, 5%);
   &__header {
     margin-bottom: 2rem;
     padding: 1rem 3rem;

@@ -38,8 +38,5 @@ export default {
   &.dark {
     background-color: #000;
   }
-  &:hover {
-    background-color: $accent;
-  }
 }
 </style>
