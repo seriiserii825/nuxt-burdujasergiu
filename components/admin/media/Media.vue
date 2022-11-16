@@ -52,7 +52,7 @@ export default {
     },
     getData() {
       this.$axios
-        .get("/media?search=" + this.search)
+        .get("/auth/media?search=" + this.search)
         .then((res) => {
           this.data = res.data.data.reverse();
         })

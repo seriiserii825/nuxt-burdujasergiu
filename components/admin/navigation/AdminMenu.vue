@@ -7,6 +7,7 @@
     AdminMenuItem(label='Attribute', icon='/svg/users.svg', :items="[{ url: '/admin/attribute/create' }, { url: '/admin/attribute' }]")
       AdminMenuItem(label='Value', icon='/svg/users.svg', :items="[{ url: '/admin/attribute-value/create' }, { url: '/admin/attribute-value' }]")
     AdminMenuItem(label='User', icon='/svg/users.svg', :items="[{ url: '/admin/user/create' }, { url: '/admin/user' }]")
+    AdminMenuItem(label='Post category', icon='/svg/category.svg', :items="[{ url: '/admin/post-category/create' }, { url: '/admin/post-category' }]")
 </template>
 <script>
 import AdminMenuItem from "./AdminMenuItem.vue";

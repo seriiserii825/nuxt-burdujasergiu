@@ -1,5 +1,6 @@
 .form {
   min-height: 100vh;
+  color: $text-color;
   &__url {
     margin: 1rem 0;
     padding: 1rem;
@@ -10,11 +11,10 @@
     padding: 2rem;
     font-weight: bold;
     color: $text-light;
-    background: $accent;
+    background: $text-color;
     border-top-left-radius: 2rem;
     border-top-right-radius: 2rem;
     &.form__header--error {
-      color: white;
       background: red;
     }
   }

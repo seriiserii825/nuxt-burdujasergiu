@@ -43,7 +43,7 @@ export default {
   },
   created() {
     if (this.$auth && this.$auth.user) {
-      this.$router.push('/');
+      this.$router.push('/admin');
     }
   }
 }
