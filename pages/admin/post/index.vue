@@ -9,7 +9,6 @@
         <thead>
           <tr>
             <th>ID</th>
-            <th>Image</th>
             <th>Title</th>
             <th>Slug</th>
             <th>Category</th>
@@ -20,16 +19,9 @@
         <tbody>
           <tr v-for="item in data" :key="item.id">
             <td>{{ item.id }}</td>
-            <td>
-              <img
-                :src="`${server_url}${item.image}`"
-                width="100"
-                alt=""
-              />
-            </td>
             <td>{{ item.title }}</td>
             <td>{{ item.slug }}</td>
-            <td>{{ item.category }}</td>
+            <td>{{ item.category.title }}</td>
             <td>
               <span class="badge" :class="badgeClass(item)">
                 {{ item.status }}
@@ -107,7 +99,6 @@ export default {
         .get("/auth/post")
         .then((res) => {
           this.data = res.data.data;
-          console.log(this.data, "this.data");
         })
         .catch((err) => {
           console.log(err.response.data.message, "err.response");

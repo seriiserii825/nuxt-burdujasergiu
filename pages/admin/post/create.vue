@@ -3,7 +3,12 @@
     <div class="form__flex">
       <div class="form__item" :class="{ 'form__item--error': errors.name }">
         <label class="form__label" htmlFor="name">Title</label>
-        <input type="text" placeholder="Enter title..." v-model="title" />
+        <input
+          type="text"
+          placeholder="Enter title..."
+          v-model="title"
+          @change="setSlug"
+        />
         <p v-if="errors && errors.title" class="text-error">
           {{ errors.title[0] }}
         </p>
@@ -16,31 +21,32 @@
         </p>
       </div>
     </div>
-    <div class="form__item" :class="{ 'form__item--error': errors.content }">
-      <label class="form__label" for="content">Content</label>
+    <div class="form__item" :class="{ 'form__item--error': errors.text }">
+      <label class="form__label" for="text">Content</label>
       <client-only>
-        <mavon-editor v-model="content" language="en"></mavon-editor>
+        <mavon-editor v-model="text" language="en"></mavon-editor>
       </client-only>
-      <p class="text-error" v-if="errors && errors.content">
-        {{ errors.content[0] }}
+      <p class="text-error" v-if="errors && errors.text">
+        {{ errors.text[0] }}
       </p>
     </div>
     <div class="form__flex">
       <div class="form__item">
-        <label class="form__label" htmlFor="image">Cover image</label>
-        <button class="btn btn--success" @click="coverImageHandler">
-          Add image
-        </button>
-        <p v-if="image" class="form__url">{{ image }}</p>
-        <p v-if="errors.image" class="text-error">
-          {{ errors.image[0] }}
+        <label class="form__label" for="post_category_id">Category</label>
+        <select id="post_category_id" name="post_category_id" v-model="post_category_id">
+          <option v-for="item in categories" :key="item.id" :value="item.id">
+            {{ item.title }}
+          </option>
+        </select>
+        <p class="text-error" v-if="errors &amp;&amp; errors.post_category_id">
+          {{ errors.post_category_id[0] }}
         </p>
       </div>
       <div class="form__item">
         <label class="form__label" htmlFor="select">Status</label>
         <select name="status" id="status" v-model="status">
-          <option value="0">Active</option>
-          <option value="1">Inactive</option>
+          <option value="1">Active</option>
+          <option value="0">Inactive</option>
         </select>
         <p v-if="errors.status" class="text-error">
           {{ errors.status[0] }}
@@ -65,8 +71,10 @@ export default {
     return {
       title: "",
       slug: "",
-      content: "",
-      status: "",
+      text: "",
+      status: "1",
+      post_category_id: "",
+      categories: [],
       image: "",
       media_images: [],
       errors: {},
@@ -79,7 +87,8 @@ export default {
       const data = {
         title: this.title,
         slug: this.slug,
-        content: this.content,
+        text: this.text,
+        post_category_id: this.post_category_id,
         image: this.image,
         status: this.status,
       };
@@ -94,6 +103,15 @@ export default {
             this.errors = err.response.data.errors;
           }
         });
+    },
+    getCategories() {
+      this.$axios.get("/auth/post-category").then((res) => {
+        this.categories = res.data;
+        this.post_category_id = res.data[0].id;
+      });
+    },
+    setSlug() {
+      this.slug = this.title.toLowerCase().replace(/ /g, "-");
     },
     coverImageHandler() {
       document.body.style.overflow = "hidden";
@@ -111,6 +129,9 @@ export default {
   components: {
     AdminForm,
     AdminMedia,
+  },
+  created() {
+    this.getCategories();
   },
 };
 </script>

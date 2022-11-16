@@ -35,7 +35,7 @@ export default {
             password: this.password,
           }
         });
-        await this.$router.push('/');
+        await this.$router.push('/admin');
       } catch (err) {
         this.errors = err.response.data.errors;
       }
@@ -43,7 +43,7 @@ export default {
   },
   created() {
     if (this.$auth && this.$auth.user) {
-      this.$router.push('/admin');
+      this.$router.push('/');
     }
   }
 }

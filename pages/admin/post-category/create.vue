@@ -11,8 +11,8 @@
       <div class="form__item">
         <label class="form__label" htmlFor="select">Status</label>
         <select name="status" id="status" v-model="status">
-          <option value="0">Active</option>
-          <option value="1">Inactive</option>
+          <option value="1">Active</option>
+          <option value="0">Inactive</option>
         </select>
         <p v-if="errors.status" class="text-error">
           {{ errors.status[0] }}
@@ -48,7 +48,7 @@ export default {
   data() {
     return {
       title: "",
-      status: "",
+      status: "1",
       image: "",
       media_images: [],
       errors: {},

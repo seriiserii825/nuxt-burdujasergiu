@@ -14,10 +14,8 @@
       </button>
       <nuxt-link class="btn" to="/admin/media"> View Media </nuxt-link>
     </div>
-    <div class="admin-header__profile">
-      <nuxt-link to="/">
-        <img src="/svg/user-lock.svg" alt="logo" :width="30" height="30" />
-      </nuxt-link>
+    <div @click="logout" class="admin-header__profile">
+      <img src="/svg/user-lock.svg" alt="logo" :width="30" height="30" />
     </div>
   </header>
 </template>
@@ -29,6 +27,9 @@ export default {
     },
     toggleSidebar() {
       this.$store.dispatch("toggleSidebar");
+    },
+    logout() {
+      this.$auth.logout();
     },
   },
 };
