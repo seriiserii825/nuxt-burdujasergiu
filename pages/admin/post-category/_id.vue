@@ -11,9 +11,12 @@
       <div class="form__item">
         <label class="form__label" htmlFor="select">Status</label>
         <select name="status" id="status" v-model="status">
-          <option value="0">Active</option>
-          <option value="1">Inactive</option>
+          <option value="1">Active</option>
+          <option value="0">Inactive</option>
         </select>
+        <p v-if="errors.status" class="text-error">
+          {{ errors.status[0] }}
+        </p>
       </div>
     </div>
     <div class="form__flex">
@@ -62,11 +65,12 @@ export default {
       };
 
       this.$axios
-        .post("/auth/post-category", data)
+        .put("/auth/post-category/" + this.id, data)
         .then(() => {
           this.$router.push("/admin/post-category");
         })
         .catch((err) => {
+          console.log(err.response.data, "err.response.data");
           if (err.response.data && err.response.data.errors) {
             this.errors = err.response.data.errors;
           }
@@ -111,5 +115,3 @@ export default {
   },
 };
 </script>
-
-

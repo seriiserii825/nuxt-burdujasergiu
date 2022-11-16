@@ -23,8 +23,8 @@ export default {
   justify-content: center;
   align-items: center;
   padding: 0 3rem;
-  height: 5rem;
-  font-size: 2rem;
+  height: 3rem;
+  font-size: 1.5rem;
   text-transform: uppercase;
   letter-spacing: 1px;
   color: #fff;

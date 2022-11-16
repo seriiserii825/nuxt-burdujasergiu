@@ -14,6 +14,9 @@
           <option value="0">Active</option>
           <option value="1">Inactive</option>
         </select>
+        <p v-if="errors.status" class="text-error">
+          {{ errors.status[0] }}
+        </p>
       </div>
     </div>
     <div class="form__flex">
@@ -91,4 +94,3 @@ export default {
   },
 };
 </script>
-

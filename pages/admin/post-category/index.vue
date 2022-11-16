@@ -1,5 +1,5 @@
 <template>
-  <AdminForm label="Books">
+  <AdminForm label="Post categories">
     <AdminTable>
       <div class="search">
         <label htmlFor="search">Search:</label>
@@ -73,7 +73,7 @@ export default {
       this.getData();
     },
     badgeClass(item) {
-      return item.status == 1 ? "badge--success" : "badge--danger";
+      return item.status == "1" ? "badge--success" : "badge--danger";
     },
     formatDate(date) {
       let options = {
@@ -90,7 +90,7 @@ export default {
     },
     deleteItem(id) {
       this.$axios
-        .delete("/book/" + id)
+        .delete("/auth/post-category/" + id)
         .then(() => {
           this.getData();
         })
@@ -115,4 +115,3 @@ export default {
   },
 };
 </script>
-
