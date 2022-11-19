@@ -1,34 +1,32 @@
 <template>
-  <AdminForm label="Post list">
+  <AdminForm label="Portfolio">
     <AdminTable>
       <div class="search">
         <label htmlFor="search">Search:</label>
         <input type="text" v-model="search" @input="onSearch" />
       </div>
-      <table>
+      <table v-if="data.length">
         <thead>
           <tr>
             <th>ID</th>
+            <th>Image</th>
             <th>Title</th>
             <th>Slug</th>
-            <th>Category</th>
-            <th>Status</th>
+            <th>Taxonomy</th>
             <th>Action</th>
           </tr>
         </thead>
         <tbody>
           <tr v-for="item in data" :key="item.id">
             <td>{{ item.id }}</td>
+            <td>
+              <img width="100" :src="`${server_url}${item.image}`" alt="" />
+            </td>
             <td>{{ item.title }}</td>
             <td>{{ item.slug }}</td>
-            <td>{{ item.category.title }}</td>
+            <td>{{ item.taxonomy.title }}</td>
             <td>
-              <span class="badge" :class="badgeClass(item)">
-                {{ item.status }}
-              </span>
-            </td>
-            <td>
-              <nuxt-link :to="`/admin/post/` + item.id">
+              <nuxt-link :to="`/admin/portfolio/` + item.id">
                 <a class="btn btn--success">Edit</a>
               </nuxt-link>
               <button
@@ -86,7 +84,7 @@ export default {
     },
     deleteItem(id) {
       this.$axios
-        .delete("/auth/post/" + id)
+        .delete("/auth/portfolio/" + id)
         .then(() => {
           this.getData();
         })
@@ -96,7 +94,7 @@ export default {
     },
     getData() {
       this.$axios
-        .get("/auth/post")
+        .get("/auth/portfolio")
         .then((res) => {
           this.data = res.data.data;
         })

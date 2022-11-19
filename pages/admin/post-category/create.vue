@@ -1,5 +1,5 @@
 <template>
-  <AdminForm label="Create book">
+  <AdminForm label="Create category">
     <div class="form__flex">
       <div class="form__item" :class="{ 'form__item--error': errors.name }">
         <label class="form__label" htmlFor="name">Title</label>

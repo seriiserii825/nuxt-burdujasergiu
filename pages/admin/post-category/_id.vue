@@ -1,5 +1,5 @@
 <template>
-  <AdminForm label="Create book">
+  <AdminForm label="Edit category">
     <div class="form__flex">
       <div class="form__item" :class="{ 'form__item--error': errors.name }">
         <label class="form__label" htmlFor="name">Title</label>
@@ -70,7 +70,6 @@ export default {
           this.$router.push("/admin/post-category");
         })
         .catch((err) => {
-          console.log(err.response.data, "err.response.data");
           if (err.response.data && err.response.data.errors) {
             this.errors = err.response.data.errors;
           }
