@@ -103,6 +103,21 @@ export default {
           }
         });
     },
+    getData() {
+      this.$axios
+        .get("/auth/portfolio/" + this.id)
+        .then((res) => {
+          const {title, slug, taxonomy_id, image, url} = res.data.data;
+          this.title = title;
+          this.slug = slug;
+          this.taxonomy_id = taxonomy_id;
+          this.image = image;
+          this.url = url;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
     getCategories() {
       this.$axios.get("/auth/taxonomy").then((res) => {
         this.taxonomies = res.data.data;
@@ -131,8 +146,9 @@ export default {
     AdminMedia,
   },
   created() {
-    this.getCategories();
     this.id = this.$route.params.id;
+    this.getCategories();
+    this.getData();
   },
 };
 </script>
