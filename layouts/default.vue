@@ -32,7 +32,7 @@ export default {
   &__menu {
     padding: 15rem 4rem;
     flex: 0 0 23rem;
-    background: red;
+    background: #191919;
     &-logo {
       margin-bottom: 4rem;
       .logo {
