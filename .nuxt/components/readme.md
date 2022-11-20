@@ -1,0 +1,47 @@
+# Discovered Components
+
+This is an auto-generated list of components discovered by [nuxt/components](https://github.com/nuxt/components).
+
+You can directly use them in pages and other components without the need to import them.
+
+**Tip:** If a component is conditionally rendered with `v-if` and is big, it is better to use `Lazy` or `lazy-` prefix to lazy load.
+
+- `<Footer>` | `<footer>` (components/Footer.vue)
+- `<Logo>` | `<logo>` (components/Logo.vue)
+- `<Menu>` | `<menu>` (components/Menu.vue)
+- `<NuxtLogo>` | `<nuxt-logo>` (components/NuxtLogo.vue)
+- `<Tutorial>` | `<tutorial>` (components/Tutorial.vue)
+- `<ElementsBlogComponent>` | `<elements-blog-component>` (components/elements/BlogComponent.vue)
+- `<ElementsBlogsComponent>` | `<elements-blogs-component>` (components/elements/BlogsComponent.vue)
+- `<ElementsCategoryListComponent>` | `<elements-category-list-component>` (components/elements/CategoryListComponent.vue)
+- `<ElementsPortfolioComponent>` | `<elements-portfolio-component>` (components/elements/PortfolioComponent.vue)
+- `<ElementsPortfoliosComponent>` | `<elements-portfolios-component>` (components/elements/PortfoliosComponent.vue)
+- `<ElementsProgressComponent>` | `<elements-progress-component>` (components/elements/ProgressComponent.vue)
+- `<ElementsService>` | `<elements-service>` (components/elements/Service.vue)
+- `<FrontAboutUs>` | `<front-about-us>` (components/front/AboutUs.vue)
+- `<FrontCart>` | `<front-cart>` (components/front/Cart.vue)
+- `<Notify>` | `<notify>` (components/notify/Notify.vue)
+- `<SectionsAbout>` | `<sections-about>` (components/sections/About.vue)
+- `<SectionsIntro>` | `<sections-intro>` (components/sections/Intro.vue)
+- `<SectionsSkills>` | `<sections-skills>` (components/sections/Skills.vue)
+- `<UiBtn>` | `<ui-btn>` (components/ui/Btn.vue)
+- `<UiSectionHeader>` | `<ui-section-header>` (components/ui/SectionHeader.vue)
+- `<AdminTable>` | `<admin-table>` (components/admin/form/AdminTable.vue)
+- `<AdminForm>` | `<admin-form>` (components/admin/form/Form.vue)
+- `<AdminHeader>` | `<admin-header>` (components/admin/layouts/AdminHeader.vue)
+- `<AdminSidebar>` | `<admin-sidebar>` (components/admin/layouts/AdminSidebar.vue)
+- `<AdminMediaAddMedia>` | `<admin-media-add-media>` (components/admin/media/AddMedia.vue)
+- `<AdminMedia>` | `<admin-media>` (components/admin/media/AdminMedia.vue)
+- `<AdminMediaItem>` | `<admin-media-item>` (components/admin/media/AdminMediaItem.vue)
+- `<AdminMediaTable>` | `<admin-media-table>` (components/admin/media/MediaTable.vue)
+- `<AdminMediaTableItem>` | `<admin-media-table-item>` (components/admin/media/MediaTableItem.vue)
+- `<AdminMenu>` | `<admin-menu>` (components/admin/navigation/AdminMenu.vue)
+- `<AdminMenuItem>` | `<admin-menu-item>` (components/admin/navigation/AdminMenuItem.vue)
+- `<AdminUtilsAtributeComponent>` | `<admin-utils-atribute-component>` (components/admin/utils/AtributeComponent.vue)
+- `<AdminUtilsAutoComplete>` | `<admin-utils-auto-complete>` (components/admin/utils/AutoComplete.vue)
+- `<AdminWidgetsInfoWidget>` | `<admin-widgets-info-widget>` (components/admin/widgets/InfoWidget.vue)
+- `<FrontProductCategoryFilter>` | `<front-product-category-filter>` (components/front/product/CategoryFilter.vue)
+- `<FrontProductGallery>` | `<front-product-gallery>` (components/front/product/ProductGallery.vue)
+- `<FrontProductLoop>` | `<front-product-loop>` (components/front/product/ProductLoop.vue)
+- `<FrontProductLoopItem>` | `<front-product-loop-item>` (components/front/product/ProductLoopItem.vue)
+- `<FrontProductQuantity>` | `<front-product-quantity>` (components/front/product/Quantity.vue)

@@ -1,0 +1,184 @@
+[
+  {
+    "name": "about",
+    "path": "/about",
+    "component": "/home/serii/Sites/nuxt/nuxt-burdujasergiu/pages/about.vue",
+    "chunkName": "pages/about",
+    "_name": "_28ed9e5e"
+  },
+  {
+    "name": "admin",
+    "path": "/admin",
+    "component": "/home/serii/Sites/nuxt/nuxt-burdujasergiu/pages/admin/index.vue",
+    "chunkName": "pages/admin/index",
+    "_name": "_adca08ba"
+  },
+  {
+    "name": "blog",
+    "path": "/blog",
+    "component": "/home/serii/Sites/nuxt/nuxt-burdujasergiu/pages/blog.vue",
+    "chunkName": "pages/blog",
+    "_name": "_cb54a13e"
+  },
+  {
+    "name": "cabinet",
+    "path": "/cabinet",
+    "component": "/home/serii/Sites/nuxt/nuxt-burdujasergiu/pages/cabinet.vue",
+    "chunkName": "pages/cabinet",
+    "_name": "_d89e952e"
+  },
+  {
+    "name": "login",
+    "path": "/login",
+    "component": "/home/serii/Sites/nuxt/nuxt-burdujasergiu/pages/login.vue",
+    "chunkName": "pages/login",
+    "_name": "_124d1c3a"
+  },
+  {
+    "name": "order",
+    "path": "/order",
+    "component": "/home/serii/Sites/nuxt/nuxt-burdujasergiu/pages/order.vue",
+    "chunkName": "pages/order",
+    "_name": "_6170399f"
+  },
+  {
+    "name": "portfolio",
+    "path": "/portfolio",
+    "component": "/home/serii/Sites/nuxt/nuxt-burdujasergiu/pages/portfolio.vue",
+    "chunkName": "pages/portfolio",
+    "_name": "_2c67b3ce"
+  },
+  {
+    "name": "register",
+    "path": "/register",
+    "component": "/home/serii/Sites/nuxt/nuxt-burdujasergiu/pages/register.vue",
+    "chunkName": "pages/register",
+    "_name": "_79b8da62"
+  },
+  {
+    "name": "services",
+    "path": "/services",
+    "component": "/home/serii/Sites/nuxt/nuxt-burdujasergiu/pages/services.vue",
+    "chunkName": "pages/services",
+    "_name": "_13f732c6"
+  },
+  {
+    "name": "admin-media",
+    "path": "/admin/media",
+    "component": "/home/serii/Sites/nuxt/nuxt-burdujasergiu/pages/admin/media.vue",
+    "chunkName": "pages/admin/media",
+    "_name": "_58d169b5"
+  },
+  {
+    "name": "admin-media.vue",
+    "path": "/admin/media.vue",
+    "component": "/home/serii/Sites/nuxt/nuxt-burdujasergiu/pages/admin/media.vue/index.vue",
+    "chunkName": "pages/admin/media.vue/index",
+    "_name": "_03dd7290"
+  },
+  {
+    "name": "admin-portfolio",
+    "path": "/admin/portfolio",
+    "component": "/home/serii/Sites/nuxt/nuxt-burdujasergiu/pages/admin/portfolio/index.vue",
+    "chunkName": "pages/admin/portfolio/index",
+    "_name": "_7334585c"
+  },
+  {
+    "name": "admin-post",
+    "path": "/admin/post",
+    "component": "/home/serii/Sites/nuxt/nuxt-burdujasergiu/pages/admin/post/index.vue",
+    "chunkName": "pages/admin/post/index",
+    "_name": "_6d453a22"
+  },
+  {
+    "name": "admin-post-category",
+    "path": "/admin/post-category",
+    "component": "/home/serii/Sites/nuxt/nuxt-burdujasergiu/pages/admin/post-category/index.vue",
+    "chunkName": "pages/admin/post-category/index",
+    "_name": "_c7bf5b42"
+  },
+  {
+    "name": "admin-taxonomy",
+    "path": "/admin/taxonomy",
+    "component": "/home/serii/Sites/nuxt/nuxt-burdujasergiu/pages/admin/taxonomy/index.vue",
+    "chunkName": "pages/admin/taxonomy/index",
+    "_name": "_0fac6013"
+  },
+  {
+    "name": "admin-portfolio-create",
+    "path": "/admin/portfolio/create",
+    "component": "/home/serii/Sites/nuxt/nuxt-burdujasergiu/pages/admin/portfolio/create.vue",
+    "chunkName": "pages/admin/portfolio/create",
+    "_name": "_1b0afde2"
+  },
+  {
+    "name": "admin-post-category-create",
+    "path": "/admin/post-category/create",
+    "component": "/home/serii/Sites/nuxt/nuxt-burdujasergiu/pages/admin/post-category/create.vue",
+    "chunkName": "pages/admin/post-category/create",
+    "_name": "_0f9e443f"
+  },
+  {
+    "name": "admin-post-create",
+    "path": "/admin/post/create",
+    "component": "/home/serii/Sites/nuxt/nuxt-burdujasergiu/pages/admin/post/create.vue",
+    "chunkName": "pages/admin/post/create",
+    "_name": "_631654dc"
+  },
+  {
+    "name": "admin-taxonomy-create",
+    "path": "/admin/taxonomy/create",
+    "component": "/home/serii/Sites/nuxt/nuxt-burdujasergiu/pages/admin/taxonomy/create.vue",
+    "chunkName": "pages/admin/taxonomy/create",
+    "_name": "_0d93ed0b"
+  },
+  {
+    "name": "admin-portfolio-id",
+    "path": "/admin/portfolio/:id",
+    "component": "/home/serii/Sites/nuxt/nuxt-burdujasergiu/pages/admin/portfolio/_id.vue",
+    "chunkName": "pages/admin/portfolio/_id",
+    "_name": "_65167c78"
+  },
+  {
+    "name": "admin-post-category-id",
+    "path": "/admin/post-category/:id",
+    "component": "/home/serii/Sites/nuxt/nuxt-burdujasergiu/pages/admin/post-category/_id.vue",
+    "chunkName": "pages/admin/post-category/_id",
+    "_name": "_8be53ef2"
+  },
+  {
+    "name": "admin-post-id",
+    "path": "/admin/post/:id",
+    "component": "/home/serii/Sites/nuxt/nuxt-burdujasergiu/pages/admin/post/_id.vue",
+    "chunkName": "pages/admin/post/_id",
+    "_name": "_2fbf5d0a"
+  },
+  {
+    "name": "admin-taxonomy-id",
+    "path": "/admin/taxonomy/:id",
+    "component": "/home/serii/Sites/nuxt/nuxt-burdujasergiu/pages/admin/taxonomy/_id.vue",
+    "chunkName": "pages/admin/taxonomy/_id",
+    "_name": "_74e94b3b"
+  },
+  {
+    "name": "product-id",
+    "path": "/product/:id?",
+    "component": "/home/serii/Sites/nuxt/nuxt-burdujasergiu/pages/product/_id.vue",
+    "chunkName": "pages/product/_id",
+    "_name": "_7a920a2b"
+  },
+  {
+    "name": "index",
+    "path": "/",
+    "component": "/home/serii/Sites/nuxt/nuxt-burdujasergiu/pages/index.vue",
+    "chunkName": "pages/index",
+    "_name": "_48a57923"
+  },
+  {
+    "name": "category-id",
+    "path": "/:category/:id?",
+    "component": "/home/serii/Sites/nuxt/nuxt-burdujasergiu/pages/_category/_id.vue",
+    "chunkName": "pages/_category/_id",
+    "_name": "_44ce794e"
+  }
+]
