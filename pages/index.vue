@@ -37,6 +37,23 @@ export default {
     Intro,
   },
   layout: "default",
+  methods: {
+    getData() {
+      this.$axios
+        .get("/auth/admin")
+        .then((response) => {
+          for (let pair of response.headers.entries()) {
+            console.log(pair[0] + ": " + pair[1]);
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+  },
+  created() {
+    this.getData();
+  },
 };
 </script>
 <style lang="scss">
