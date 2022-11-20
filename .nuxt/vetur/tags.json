@@ -14,6 +14,15 @@
   "Tutorial": {
     "description": "Auto imported from components/Tutorial.vue"
   },
+  "FrontAboutUs": {
+    "description": "Auto imported from components/front/AboutUs.vue"
+  },
+  "FrontCart": {
+    "description": "Auto imported from components/front/Cart.vue"
+  },
+  "Notify": {
+    "description": "Auto imported from components/notify/Notify.vue"
+  },
   "ElementsBlogComponent": {
     "description": "Auto imported from components/elements/BlogComponent.vue"
   },
@@ -35,9 +44,6 @@
   "ElementsService": {
     "description": "Auto imported from components/elements/Service.vue"
   },
-  "Notify": {
-    "description": "Auto imported from components/notify/Notify.vue"
-  },
   "SectionsAbout": {
     "description": "Auto imported from components/sections/About.vue"
   },
@@ -46,12 +52,6 @@
   },
   "SectionsSkills": {
     "description": "Auto imported from components/sections/Skills.vue"
-  },
-  "FrontAboutUs": {
-    "description": "Auto imported from components/front/AboutUs.vue"
-  },
-  "FrontCart": {
-    "description": "Auto imported from components/front/Cart.vue"
   },
   "UiBtn": {
     "description": "Auto imported from components/ui/Btn.vue"

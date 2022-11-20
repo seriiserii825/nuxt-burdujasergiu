@@ -63,7 +63,7 @@
   </AdminForm>
 </template>
 <script>
-import AdminMedia from "@/admin/media/Media";
+import AdminMedia from "@/admin/media/AdminMedia";
 import AdminForm from "@/admin/form/Form";
 export default {
   layout: "admin",

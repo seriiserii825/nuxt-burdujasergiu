@@ -2,16 +2,16 @@
   <div class="media">
     <div class="media__container">
       <header class="media__header">
-        <input type="text" v-model="search" placeholder="Search..."/>
+        <input type="text" @input="getData" v-model="search" placeholder="Search..." />
         <button class="btn btn--danger" @click="onClose">Close</button>
       </header>
       <div class="media__body">
         <div class="media__wrap">
           <MediaItem
-              v-for="item in data"
-              :key="item.id"
-              :item="item"
-              @on-choose="addImage"
+            v-for="item in data"
+            :key="item.id"
+            :item="item"
+            @on-choose="addImage"
           />
         </div>
       </div>
@@ -22,7 +22,7 @@
   </div>
 </template>
 <script>
-import MediaItem from "@/admin/media/MediaItem.vue";
+import MediaItem from "@/admin/media/AdminMediaItem.vue";
 
 export default {
   props: {
@@ -42,7 +42,7 @@ export default {
     addImage(full_url, remove) {
       if (remove) {
         this.images = images.filter(
-            (image_full_url) => image_full_url !== full_url
+          (image_full_url) => image_full_url !== full_url
         );
       } else {
         if (!this.images.includes(full_url)) {
@@ -55,7 +55,6 @@ export default {
         this.$emit("on-gallery", this.images);
         this.$emit("on-close");
       } else {
-          console.log(this.images, "this.images");
         this.$emit("on-images", this.images);
         this.$emit("on-close");
       }
@@ -65,13 +64,13 @@ export default {
     },
     getData() {
       this.$axios
-          .get("/auth/media?search=" + this.search)
-          .then((res) => {
-            this.data = res.data.data.reverse();
-          })
-          .catch((err) => {
-            console.log(err.response, "err.response");
-          });
+        .get("/auth/media?search=" + this.search)
+        .then((res) => {
+          this.data = res.data.data.reverse();
+        })
+        .catch((err) => {
+          console.log(err.response, "err.response");
+        });
     },
   },
   components: {

@@ -59,7 +59,8 @@
     .admin__column
       AdminForm(label="Last products")
         .admin-products(v-if="products && products.length")
-          nuxt-link.admin-products__item(:to="`/admin/product/${item.id}`")(
+          nuxt-link.admin-products__item(
+            :to="`/admin/product/${item.id}`"
             v-for="item in products",
             :key="item.id"
           )
