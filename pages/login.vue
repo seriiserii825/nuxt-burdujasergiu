@@ -24,27 +24,28 @@ export default {
       errors: [],
       email: "",
       password: "",
-    }
+    };
   },
   methods: {
     async onSubmit() {
       try {
-        await this.$auth.loginWith('laravelJWT', {
+        await this.$auth.loginWith("laravelJWT", {
           data: {
             email: this.email,
             password: this.password,
-          }
+          },
         });
-        await this.$router.push('/admin');
+        await this.$router.push("/admin");
       } catch (err) {
+        console.log(err, "err");
         this.errors = err.response.data.errors;
       }
     },
   },
   created() {
     if (this.$auth && this.$auth.user) {
-      this.$router.push('/');
+      this.$router.push("/");
     }
-  }
-}
+  },
+};
 </script>
