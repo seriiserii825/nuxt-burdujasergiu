@@ -18,6 +18,15 @@
       background: red;
     }
   }
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .search {
+      flex: 1;
+      padding-left: 4rem;
+    }
+  }
   &__body {
     padding: 2rem 2rem 18rem;
     background-color: #fff;

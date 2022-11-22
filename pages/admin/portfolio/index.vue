@@ -1,10 +1,14 @@
 <template>
   <AdminForm label="Portfolio">
     <AdminTable>
-      <div class="search">
-        <label htmlFor="search">Search:</label>
-        <input type="text" v-model="search" @input="onSearch" />
-      </div>
+      <header class="form__top">
+        <nuxt-link to="/admin/portfolio/create" class="btn">Add new</nuxt-link>
+        <div class="search">
+          <label htmlFor="search">Search:</label>
+          <input type="text" v-model="search" @input="onSearch" />
+        </div>
+      </header>
+
       <table v-if="data.length">
         <thead>
           <tr>

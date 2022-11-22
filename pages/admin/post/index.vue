@@ -1,10 +1,13 @@
 <template>
   <AdminForm label="Post list">
     <AdminTable>
-      <div class="search">
-        <label htmlFor="search">Search:</label>
-        <input type="text" v-model="search" @input="onSearch" />
-      </div>
+      <header class="form__top">
+        <nuxt-link to="/admin/post/create" class="btn">Add new</nuxt-link>
+        <div class="search">
+          <label htmlFor="search">Search:</label>
+          <input type="text" v-model="search" @input="onSearch" />
+        </div>
+      </header>
       <table>
         <thead>
           <tr>

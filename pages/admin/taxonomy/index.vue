@@ -1,10 +1,13 @@
 <template>
-  <AdminForm label="Post categories">
+  <AdminForm label="Taxonomy">
     <AdminTable>
-      <div class="search">
-        <label htmlFor="search">Search:</label>
-        <input type="text" v-model="search" @input="onSearch" />
-      </div>
+      <header class="form__top">
+        <nuxt-link to="/admin/taxonomy/create" class="btn">Add new</nuxt-link>
+        <div class="search">
+          <label htmlFor="search">Search:</label>
+          <input type="text" v-model="search" @input="onSearch" />
+        </div>
+      </header>
       <table>
         <thead>
           <tr>
