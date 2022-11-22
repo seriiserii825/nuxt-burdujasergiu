@@ -2,7 +2,13 @@
   <div class="media">
     <div class="media__container">
       <header class="media__header">
-        <input type="text" @input="getData" v-model="search" placeholder="Search..." />
+        <input
+          ref="search"
+          type="text"
+          @input="getData"
+          v-model="search"
+          placeholder="Search..."
+        />
         <button class="btn btn--danger" @click="onClose">Close</button>
       </header>
       <div class="media__body">
@@ -78,6 +84,14 @@ export default {
   },
   created() {
     this.getData();
+    this.$nextTick(function () {
+      this.$refs.search.focus();
+    });
+    document.addEventListener("keyup", (e) => {
+      if (e.key === "Escape") {
+        this.onClose();
+      }
+    });
   },
 };
 </script>
