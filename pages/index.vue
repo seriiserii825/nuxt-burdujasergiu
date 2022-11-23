@@ -51,5 +51,3 @@ export default {
   padding: 10rem;
 }
 </style>
-<!-- TODO: create focus for first input  <23-11-22, yourname> -->
-<!-- TODO: index delete prompt  <23-11-22, yourname> -->
