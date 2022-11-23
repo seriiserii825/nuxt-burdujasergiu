@@ -4,6 +4,7 @@
       <div class="form__item" :class="{ 'form__item--error': errors.title }">
         <label class="form__label" htmlFor="title">Title</label>
         <input
+          ref="first"
           type="text"
           placeholder="Enter title..."
           v-model="title"
@@ -132,5 +133,10 @@ export default {
   created() {
     this.getCategories();
   },
+  mounted(){
+    this.$nextTick(() => {
+      this.$refs.first.focus();
+    });
+  }
 };
 </script>

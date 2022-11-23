@@ -3,7 +3,12 @@
     <div class="form__flex">
       <div class="form__item" :class="{ 'form__item--error': errors.name }">
         <label class="form__label" htmlFor="name">Title</label>
-        <input type="text" placeholder="Enter title..." v-model="title" />
+        <input
+          ref="first"
+          type="text"
+          placeholder="Enter title..."
+          v-model="title"
+        />
         <p v-if="errors && errors.title" class="text-error">
           {{ errors.title[0] }}
         </p>
@@ -43,6 +48,11 @@ export default {
   },
   components: {
     AdminForm,
+  },
+  mounted() {
+    this.$nextTick(() => {
+      this.$refs.first.focus();
+    });
   },
 };
 </script>

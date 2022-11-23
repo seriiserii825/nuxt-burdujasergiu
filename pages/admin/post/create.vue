@@ -4,6 +4,7 @@
       <div class="form__item" :class="{ 'form__item--error': errors.name }">
         <label class="form__label" htmlFor="name">Title</label>
         <input
+          ref="first"
           type="text"
           placeholder="Enter title..."
           v-model="title"
@@ -33,7 +34,11 @@
     <div class="form__flex">
       <div class="form__item">
         <label class="form__label" for="post_category_id">Category</label>
-        <select id="post_category_id" name="post_category_id" v-model="post_category_id">
+        <select
+          id="post_category_id"
+          name="post_category_id"
+          v-model="post_category_id"
+        >
           <option v-for="item in categories" :key="item.id" :value="item.id">
             {{ item.title }}
           </option>
@@ -132,6 +137,11 @@ export default {
   },
   created() {
     this.getCategories();
+  },
+  mounted() {
+    this.$nextTick(() => {
+      this.$refs.first.focus();
+    });
   },
 };
 </script>
