@@ -70,6 +70,7 @@
 <script>
 import AdminMedia from "@/admin/media/AdminMedia";
 import AdminForm from "@/admin/form/Form";
+import transliterate from "@/../utils/transliterate";
 export default {
   layout: "admin",
   data() {
@@ -117,6 +118,7 @@ export default {
     },
     setSlug() {
       this.slug = this.title.toLowerCase().replace(/ /g, "-");
+      this.slug = transliterate(this.slug);
     },
     coverImageHandler() {
       document.body.style.overflow = "hidden";
