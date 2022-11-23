@@ -6,10 +6,10 @@
       .auth-form__form
         form
           .auth-form__form-group
-            input#email(type="email" placeholder="Email" v-model="email")
+            input#email(type="email" placeholder="Email" v-model="email" name="email")
             span.auth-form--error(v-if="errors.email && errors.email[0]") {{ errors.email[0] }}
           .auth-form__form-group
-            input#password(type="password" placeholder="Password" v-model="password")
+            input#password(type="password" placeholder="Password" name="password" v-model="password")
             span.auth-form--error(v-if="errors.password && errors.password[0]") {{ errors.password[0] }}
           div.auth-form__info You don't have an account yet? <nuxt-link to="/register">Register</nuxt-link>
           .auth-form__form-group
