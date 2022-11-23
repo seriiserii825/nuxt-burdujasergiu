@@ -36,14 +36,18 @@ export default {
       return new Intl.DateTimeFormat("en", options).format(new Date(date));
     },
     deleteItem(id) {
-      this.$axios
-        .delete(`/auth/media/${id}`)
-        .then(() => {
-          this.$emit("delete");
-        })
-        .catch((err) => {
-          console.log(err.response, "err.response");
-        });
+      let prompt = confirm("Are you sure you want to delete this item?", "");
+
+      if (prompt) {
+        this.$axios
+          .delete(`/auth/media/${id}`)
+          .then(() => {
+            this.$emit("delete");
+          })
+          .catch((err) => {
+            console.log(err.response, "err.response");
+          });
+      }
     },
   },
   computed: {

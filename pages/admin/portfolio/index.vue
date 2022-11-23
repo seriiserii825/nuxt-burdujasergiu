@@ -87,14 +87,17 @@ export default {
       return new Intl.DateTimeFormat("en", options).format(new Date(date));
     },
     deleteItem(id) {
-      this.$axios
-        .delete("/auth/portfolio/" + id)
-        .then(() => {
-          this.getData();
-        })
-        .catch((err) => {
-          console.log(err.response.data.message, "err.response");
-        });
+      let prompt = confirm("Are you sure you want to delete this item?", "");
+      if (prompt) {
+        this.$axios
+          .delete("/auth/portfolio/" + id)
+          .then(() => {
+            this.getData();
+          })
+          .catch((err) => {
+            console.log(err.response.data.message, "err.response");
+          });
+      }
     },
     getData() {
       this.$axios

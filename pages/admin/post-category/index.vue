@@ -2,7 +2,9 @@
   <AdminForm label="Post categories">
     <AdminTable>
       <header class="form__top">
-        <nuxt-link to="/admin/post-category/create" class="btn">Add new</nuxt-link>
+        <nuxt-link to="/admin/post-category/create" class="btn"
+          >Add new</nuxt-link
+        >
         <div class="search">
           <label htmlFor="search">Search:</label>
           <input type="text" v-model="search" @input="onSearch" />
@@ -22,11 +24,7 @@
           <tr v-for="item in data" :key="item.id">
             <td>{{ item.id }}</td>
             <td>
-              <img
-                :src="`${server_url}${item.image}`"
-                width="100"
-                alt=""
-              />
+              <img :src="`${server_url}${item.image}`" width="100" alt="" />
             </td>
             <td>{{ item.title }}</td>
             <td>
@@ -92,14 +90,17 @@ export default {
       return new Intl.DateTimeFormat("en", options).format(new Date(date));
     },
     deleteItem(id) {
-      this.$axios
-        .delete("/auth/post-category/" + id)
-        .then(() => {
-          this.getData();
-        })
-        .catch((err) => {
-          console.log(err.response.data.message, "err.response");
-        });
+      let prompt = confirm("Are you sure you want to delete this item?", "");
+      if (prompt) {
+        this.$axios
+          .delete("/auth/post-category/" + id)
+          .then(() => {
+            this.getData();
+          })
+          .catch((err) => {
+            console.log(err.response.data.message, "err.response");
+          });
+      }
     },
     getData() {
       this.$axios
