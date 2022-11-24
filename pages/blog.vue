@@ -6,7 +6,7 @@
         <blogs-component/>
       </main>
       <aside class="page-blog__sidebar">
-        <CategoryListComponent/>
+        <CategoryListComponent :categories="post_categories"/>
       </aside>
     </div>
   </div>
@@ -19,7 +19,21 @@ import SectionHeader from "@/ui/SectionHeader";
 
 export default {
   components: {BlogsComponent, CategoryListComponent, BlogComponent, SectionHeader},
-  layout: 'default'
+  layout: 'default',
+  async asyncData({ store }) {
+    try {
+      let data = await store.state["post-categories"].data;
+      if (!data.length) {
+        await store.dispatch("post-categories/fetchData");
+        data = await store.state["post-categories"].data;
+      }
+      return {
+        post_categories: data,
+      };
+    } catch (e) {
+      return { error: e.response.data.error.message };
+    }
+  },
 }
 </script>
 <style lang="scss">
