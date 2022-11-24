@@ -4,7 +4,7 @@
       <blog-component
         :title="post.title"
         :date="post.created_at"
-        img_url="/images/css.jpg"
+        :img_url="`${siteUrl}/${post.category.image}`"
       />
     </div>
   </div>
@@ -33,15 +33,20 @@ export default {
     };
   },
   components: { BlogComponent },
+  computed: {
+    siteUrl() {
+      return process.env.siteUrl;
+    },
+  },
   mounted() {
-    console.log(this.posts, "this.posts");
+    // console.log(this.posts, "this.posts");
   },
 };
 </script>
 <style lang="scss">
 .blogs {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(23rem, 25rem));
+  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
   justify-content: center;
   grid-gap: 2rem;
 }

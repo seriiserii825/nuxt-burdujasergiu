@@ -55,7 +55,7 @@ export default {
     padding: 4rem;
   }
   &__content {
-    width: 70%;
+    width: 75%;
   }
   &__sidebar {
     width: 20%;
