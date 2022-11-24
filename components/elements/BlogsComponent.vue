@@ -1,7 +1,11 @@
 <template>
-  <div class="blogs" :style="`justify-content: ${align}`">
-    <div class="blogs__item" v-for="item in blogs_count" :key="item">
-      <blog-component title="Text gradient" date="11 April 2022" img_url="/images/css.jpg"/>
+  <div class="blogs" v-if="posts" :style="`justify-content: ${align}`">
+    <div class="blogs__item" v-for="post in posts" :key="post.id">
+      <blog-component
+        :title="post.title"
+        :date="post.created_at"
+        img_url="/images/css.jpg"
+      />
     </div>
   </div>
 </template>
@@ -10,25 +14,29 @@ import BlogComponent from "~/components/elements/BlogComponent";
 
 export default {
   props: {
+    posts: {
+      type: Array,
+      default: () => [],
+    },
     count: {
       type: Number,
-      default: 0
+      default: 0,
     },
     align: {
       type: String,
-      default: "center"
+      default: "center",
     },
   },
   data() {
     return {
-      blogs_count: 0
-    }
+      //
+    };
   },
-  components: {BlogComponent},
+  components: { BlogComponent },
   mounted() {
-    this.blogs_count = this.count === 0 ? 10 : this.count;
-  }
-}
+    console.log(this.posts, "this.posts");
+  },
+};
 </script>
 <style lang="scss">
 .blogs {
