@@ -1,5 +1,5 @@
 <template>
-  <div class="blogs" v-if="posts" :style="`justify-content: ${align}`">
+  <div class="blogs" v-if="posts.length > 0" :style="`justify-content: ${align}`">
     <div class="blogs__item" v-for="post in posts.data.data" :key="post.id">
       <blog-component
         :title="post.title"
@@ -8,6 +8,7 @@
       />
     </div>
   </div>
+  <h3 v-else>No posts found</h3>
 </template>
 <script>
 import BlogComponent from "~/components/elements/BlogComponent";

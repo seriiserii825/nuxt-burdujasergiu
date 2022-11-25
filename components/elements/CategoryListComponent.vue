@@ -4,6 +4,7 @@
     <ul v-if="categories && categories.length" class="category-list__items">
       <li v-for="category in categories" :key="category.id">{{category.title}}</li>
     </ul>
+    <h3 v-else>No categories...</h3>
   </div>
 </template>
 <script>

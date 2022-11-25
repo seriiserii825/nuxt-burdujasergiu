@@ -37,7 +37,6 @@ export default {
         await store.dispatch("post/fetchData");
         posts = await store.state["post"];
       }
-      console.log(posts, "posts");
       return {
         post_categories: data,
         posts: posts,
