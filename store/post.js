@@ -16,7 +16,7 @@ export const actions = {
       const data = await this.$axios.$get(
         process.env.API_URL + "/post"
       );
-      commit("setData", data.data);
+      commit("setData", data);
     } catch (e) {
       console.log(e, "e");
     }
