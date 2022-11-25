@@ -1,6 +1,7 @@
 export const state = () => {
   return {
     data: [],
+    error: null
   }
 }
 
@@ -18,6 +19,5 @@ export const actions = {
     } catch (e) {
       console.log(e, 'e')
     }
-
   }
 }

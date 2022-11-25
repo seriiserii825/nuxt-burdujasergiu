@@ -1,6 +1,6 @@
 <template>
   <div class="blogs" v-if="posts" :style="`justify-content: ${align}`">
-    <div class="blogs__item" v-for="post in posts.data" :key="post.id">
+    <div class="blogs__item" v-for="post in posts.data.data" :key="post.id">
       <blog-component
         :title="post.title"
         :date="post.created_at"

@@ -1,6 +1,7 @@
 export const state = () => {
   return {
     data: [],
+    error: null,
   };
 };
 
@@ -13,12 +14,10 @@ export const mutations = {
 export const actions = {
   async fetchData({ commit }) {
     try {
-      const data = await this.$axios.$get(
-        process.env.API_URL + "/post"
-      );
+      const data = await this.$axios.$get(process.env.API_URL + "/post");
       commit("setData", data);
     } catch (e) {
-      console.log(e, "e");
+      // console.log(e, "e");
     }
   },
 };

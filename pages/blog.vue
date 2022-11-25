@@ -6,7 +6,7 @@
         <blogs-component v-if="posts" :posts="posts" />
       </main>
       <aside class="page-blog__sidebar">
-        <CategoryListComponent :categories="post_categories" />
+        <CategoryListComponent :categories="post_categories.data" />
       </aside>
     </div>
   </div>
@@ -31,12 +31,13 @@ export default {
       let posts = await store.state["post"].data;
       if (!data.length) {
         await store.dispatch("post-categories/fetchData");
-        data = await store.state["post-categories"].data;
+        data = await store.state["post-categories"];
       }
       if (!posts.length) {
         await store.dispatch("post/fetchData");
-        posts = await store.state["post"].data;
+        posts = await store.state["post"];
       }
+      console.log(posts, "posts");
       return {
         post_categories: data,
         posts: posts,
