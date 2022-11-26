@@ -1,17 +1,29 @@
 <template>
   <div class="blog">
     <div class="blog__img">
-      <img :src="img_url" alt="" />
+      <img :src="img_url" alt=""/>
     </div>
     <div class="blog__content">
       <h2 class="blog__title">{{ title }}</h2>
-      <div class="blog__date">{{ date }}</div>
+      <div class="blog__date">{{ date_format }}</div>
     </div>
   </div>
 </template>
 <script>
 export default {
   props: ["img_url", "title", "date"],
+  data() {
+    return {
+      date_format: ''
+    };
+  },
+  mounted() {
+    const date = new Date(this.date);
+    const options = {
+      day: 'numeric', month: 'numeric', year: 'numeric',
+    };
+    this.date_format = new Intl.DateTimeFormat('ru-RU', options).format(date);
+  },
 };
 </script>
 <style lang="scss">

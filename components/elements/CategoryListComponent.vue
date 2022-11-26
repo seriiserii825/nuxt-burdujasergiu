@@ -3,16 +3,16 @@
     <h2 class="category-list__title">Категории</h2>
     <ul v-if="categories && categories.length" class="category-list__items">
       <li
-        :class="{ active: current_category === 0 }"
-        @click="filterByCategory(0)"
+          :class="{ active: current_category === 0 }"
+          @click="filterByCategory(0)"
       >
         All categories
       </li>
       <li
-        :class="{ active: current_category === category.id }"
-        @click="filterByCategory(category.id)"
-        v-for="category in categories"
-        :key="category.id"
+          :class="{ active: current_category === category.id }"
+          @click="filterByCategory(category.id)"
+          v-for="category in categories"
+          :key="category.id"
       >
         {{ category.title }}
       </li>
@@ -37,9 +37,14 @@ export default {
   methods: {
     async filterByCategory(id) {
       this.current_category = id;
-      await this.$store.dispatch("post/fetchDataByCategory", {
-        category_id: id,
+      const limit = this.$store.state["post"].limit;
+      const offset = this.$store.state["post"].offset;
+      await this.$store.dispatch("post/fetchData", {
+        limit: limit,
+        offset: offset,
+        post_category_id: id,
       });
+      await this.$store.dispatch("post/setLoadPosts", true);
     },
   },
 };
