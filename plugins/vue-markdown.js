@@ -1,9 +1,6 @@
-import Vue from "vue";
-import VueMarkdownEditor from "@kangc/v-md-editor";
-import "@kangc/v-md-editor/lib/style/base-editor.css";
-// Prism
-// import Prism from "prismjs";
-// highlight code
-// import "prismjs/components/prism-json";
+import Vue from 'vue'
+import VueSimpleMarkdown from 'vue-simple-markdown'
+// You need a specific loader for CSS files like https://github.com/webpack/css-loader
+import 'vue-simple-markdown/dist/vue-simple-markdown.css'
 
-Vue.use(VueMarkdownEditor);
+Vue.use(VueSimpleMarkdown)

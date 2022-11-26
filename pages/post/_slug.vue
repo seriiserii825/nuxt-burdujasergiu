@@ -3,7 +3,11 @@
     <div class="section-header">
       <h2 class="section-header__title" v-if="title">{{ title }}</h2>
     </div>
-    <div class="single-post__content">{{text}}</div>
+    <div class="single-post__content">
+      <client-only>
+        <vue-simple-markdown :source="text"></vue-simple-markdown>
+      </client-only>
+    </div>
   </div>
 </template>
 
@@ -24,7 +28,6 @@ export default {
             this.data = res.data.data;
             this.title = this.data.title;
             this.text = this.data.text;
-            console.log(JSON.stringify(this.data, null, 4), 'this.data');
           })
           .catch(err => {
             console.log(err)

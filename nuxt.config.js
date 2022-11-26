@@ -14,18 +14,13 @@ export default {
             }
         }
     }, head: {
-        title: "nx-books",
-        htmlAttrs: {
+        title: "nx-books", htmlAttrs: {
             lang: "en",
-        },
-        meta: [{charset: "utf-8"}, {
-            name: "viewport",
-            content: "width=device-width, initial-scale=1"
+        }, meta: [{charset: "utf-8"}, {
+            name: "viewport", content: "width=device-width, initial-scale=1"
         }, {hid: "description", name: "description", content: ""}, {
-            name: "format-detection",
-            content: "telephone=no"
-        },],
-        link: [{rel: "icon", type: "image/x-icon", href: "/favicon.ico"}],
+            name: "format-detection", content: "telephone=no"
+        },], link: [{rel: "icon", type: "image/x-icon", href: "/favicon.ico"}],
     }, env: {
         siteUrl: process.env.BASE_URL || "https://localhost:8088",
         apiUrl: process.env.API_URL || "https://localhost:8088/api",
@@ -37,9 +32,11 @@ export default {
     css: ["~assets/scss/my.scss"],
 
     // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-    plugins: [{src: "@/plugins/mavon-editor", mode: "client"}, {
-        src: "@/plugins/vue-paginate.client.js",
-        mode: "client"
+    plugins: [
+        {src: "@/plugins/mavon-editor", mode: "client"},
+        {src: "@/plugins/vue-markdown", mode: "client"},
+        {
+        src: "@/plugins/vue-paginate.client.js", mode: "client"
     }],
 
     // Auto import components: https://go.nuxtjs.dev/config-components
