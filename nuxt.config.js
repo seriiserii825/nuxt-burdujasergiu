@@ -17,6 +17,7 @@ export default {
   },
   env: {
     siteUrl: process.env.BASE_URL || "https://localhost:8088",
+    apiUrl: process.env.API_URL || "https://localhost:8088/api",
   },
   alias: {
     "@": resolve(__dirname, "./components/"),

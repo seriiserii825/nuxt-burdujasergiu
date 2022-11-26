@@ -14,10 +14,21 @@ export const mutations = {
 export const actions = {
   async fetchData({ commit }) {
     try {
-      const data = await this.$axios.$get(process.env.API_URL + "/post");
+      const data = await this.$axios.$get(`${process.env.apiUrl}/post`);
       commit("setData", data);
     } catch (e) {
-      // console.log(e, "e");
+      console.log(e, "e");
+    }
+  },
+  async fetchDataByCategory({ commit }, payload) {
+    try {
+      const { category_id } = payload;
+      const data = await this.$axios.$get(
+        `${process.env.apiUrl}/post?post_category_id=${category_id} `
+      );
+      commit("setData", data);
+    } catch (e) {
+      console.log(e.response, "e");
     }
   },
 };

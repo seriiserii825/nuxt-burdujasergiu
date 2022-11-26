@@ -2,7 +2,20 @@
   <div class="category-list">
     <h2 class="category-list__title">Категории</h2>
     <ul v-if="categories && categories.length" class="category-list__items">
-      <li v-for="category in categories" :key="category.id">{{category.title}}</li>
+      <li
+        :class="{ active: current_category === 0 }"
+        @click="filterByCategory(0)"
+      >
+        All categories
+      </li>
+      <li
+        :class="{ active: current_category === category.id }"
+        @click="filterByCategory(category.id)"
+        v-for="category in categories"
+        :key="category.id"
+      >
+        {{ category.title }}
+      </li>
     </ul>
     <h3 v-else>No categories...</h3>
   </div>
@@ -14,6 +27,19 @@ export default {
     categories: {
       type: Array,
       default: () => [],
+    },
+  },
+  data() {
+    return {
+      current_category: 0,
+    };
+  },
+  methods: {
+    async filterByCategory(id) {
+      this.current_category = id;
+      await this.$store.dispatch("post/fetchDataByCategory", {
+        category_id: id,
+      });
     },
   },
 };
@@ -34,6 +60,7 @@ export default {
     border: 1px solid #444;
     transition: all 0.4s;
     cursor: pointer;
+    &.active,
     &:hover {
       background-color: $accent;
       transform: translateX(-1rem);
