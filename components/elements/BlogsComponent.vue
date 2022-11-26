@@ -1,6 +1,10 @@
 <template>
-  <div class="blogs" v-if="posts.data.data && posts.data.data.length > 0" :style="`justify-content: ${align}`">
-    <div class="blogs__item" v-for="post in posts.data.data" :key="post.id">
+  <div
+    class="blogs"
+    v-if="posts  && posts.length > 0"
+    :style="`justify-content: ${align}`"
+  >
+    <div class="blogs__item" v-for="post in posts" :key="post.id">
       <blog-component
         :title="post.title"
         :date="post.created_at"
@@ -16,9 +20,9 @@ import BlogComponent from "~/components/elements/BlogComponent";
 export default {
   props: {
     posts: {
-      type: Object,
+      type: Array,
       default() {
-        return {};
+        return [];
       },
     },
     count: {
