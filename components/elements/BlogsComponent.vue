@@ -1,14 +1,16 @@
 <template>
   <div
-    class="blogs"
-    v-if="posts  && posts.length > 0"
-    :style="`justify-content: ${align}`"
+      class="blogs"
+      v-if="posts  && posts.length > 0"
+      :style="`justify-content: ${align}`"
   >
     <div class="blogs__item" v-for="post in posts" :key="post.id">
       <blog-component
-        :title="post.title"
-        :date="post.created_at"
-        :img_url="`${siteUrl}/${post.category.image}`"
+          :id="post.id"
+          :slug="post.slug"
+          :title="post.title"
+          :date="post.created_at"
+          :img_url="`${siteUrl}/${post.category.image}`"
       />
     </div>
   </div>
@@ -39,7 +41,7 @@ export default {
       //
     };
   },
-  components: { BlogComponent },
+  components: {BlogComponent},
   computed: {
     siteUrl() {
       return process.env.siteUrl;

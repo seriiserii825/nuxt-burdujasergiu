@@ -1,5 +1,5 @@
 <template>
-  <div class="blog">
+  <nuxt-link :to="`post/${slug}`" class="blog">
     <div class="blog__img">
       <img :src="img_url" alt=""/>
     </div>
@@ -7,11 +7,11 @@
       <h2 class="blog__title">{{ title }}</h2>
       <div class="blog__date">{{ date_format }}</div>
     </div>
-  </div>
+  </nuxt-link>
 </template>
 <script>
 export default {
-  props: ["img_url", "title", "date"],
+  props: ["img_url", "title", "date", "id", "slug"],
   data() {
     return {
       date_format: ''
@@ -30,6 +30,7 @@ export default {
 .blog {
   position: relative;
   transition: all 0.4s;
+  display: block;
   height: 100%;
   background: #111111;
   outline: 2px solid #444;
