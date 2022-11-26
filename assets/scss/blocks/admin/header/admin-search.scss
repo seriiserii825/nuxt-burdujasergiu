@@ -1,0 +1,14 @@
+.admin-search {
+  position: relative;
+  margin: 4rem;
+  z-index: 10;
+  input {
+    padding: 0 1rem;
+    width: 50rem;
+    height: 5rem;
+    color: white;
+    background: black;
+    border: 1px solid #d2570a;
+    border-radius: 0.4rem;
+  }
+}

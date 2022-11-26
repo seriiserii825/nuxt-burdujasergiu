@@ -1,6 +1,7 @@
 <template>
   <div class="page-blog">
     <section-header title="Блог"></section-header>
+    <div class="admin-search"><input type="text" placeholder="Search..."></div>
     <div class="page-blog__wrap">
       <main class="page-blog__content">
         <blogs-component v-if="posts" :posts="posts"/>

@@ -38,7 +38,8 @@ export default {
     async filterByCategory(id) {
       this.current_category = id;
       const limit = this.$store.state["post"].limit;
-      const offset = this.$store.state["post"].offset;
+      const offset = 0;
+      this.$store.commit("post/setOffset", offset);
       await this.$store.dispatch("post/fetchData", {
         limit: limit,
         offset: offset,
