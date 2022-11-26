@@ -29,9 +29,13 @@ export const mutations = {
 
 export const actions = {
     async fetchData({commit}, payload) {
-        const {post_category_id, limit, offset} = payload;
+        const {post_category_id, limit, offset, search} = payload;
+        let search_url = '';
+        if(search){
+            search_url = `&search=${search}`;
+        }
         try {
-            const data = await this.$axios.$get(`${process.env.apiUrl}/post?limit=${limit}&offset=${offset}&post_category_id=${post_category_id}`);
+            const data = await this.$axios.$get(`${process.env.apiUrl}/post?limit=${limit}&offset=${offset}&post_category_id=${post_category_id}${search_url}`);
             commit("setData", data);
             commit("setLimit", limit);
             commit("setOffset", offset);

@@ -1,12 +1,16 @@
 <template>
   <div class="page-blog">
     <section-header title="Блог"></section-header>
-    <div class="admin-search"><input type="text" placeholder="Search..."></div>
     <div class="page-blog__wrap">
       <main class="page-blog__content">
-        <blogs-component v-if="posts" :posts="posts"/>
+        <div>
+          <div class="admin-search"><input ref="search" type="text" placeholder="Search..." v-model="search"
+                                           @input="onSearch"/></div>
+          <blogs-component v-if="posts" :posts="posts"/>
+        </div>
         <client-only>
           <vue-paginate
+              v-if="total_pages > 1"
               :hide-prev-next="true"
               :page-count="total_pages"
               :page-range="5"
@@ -47,17 +51,15 @@ export default {
     return {
       page: 1,
       per_page: 4,
-      post_category_id: 0
+      post_category_id: 0,
+      search: ""
     };
   },
   async asyncData({store}) {
     try {
-      let data = await store.state["post-categories"].data;
+      await store.dispatch("post-categories/fetchData");
+      let data = await store.state["post-categories"];
       const post_category_id = await store.state["post"].post_category_id;
-      if (!data.length) {
-        await store.dispatch("post-categories/fetchData");
-        data = await store.state["post-categories"];
-      }
       await store.dispatch("post/fetchData", {
         limit: 4,
         offset: 0,
@@ -85,6 +87,16 @@ export default {
       let posts = await this.$store.state["post"];
       this.posts = posts.data.data;
     },
+    onSearch() {
+      this.$store.dispatch("post/fetchData", {
+        limit: this.per_page,
+        offset: 0,
+        post_category_id: this.post_category_id,
+        search: this.search
+      });
+      let posts = this.$store.state["post"];
+      this.posts = posts.data.data;
+    }
   },
   computed: {
     load_posts() {
@@ -94,6 +106,7 @@ export default {
   watch: {
     load_posts(val) {
       this.posts = this.$store.state["post"].data.data;
+      this.page = 1;
       this.total = this.$store.state["post"].data.total;
       this.per_page = this.$store.state["post"].limit;
       this.total_pages = Math.ceil(this.total / this.per_page);
@@ -103,6 +116,9 @@ export default {
   created() {
     this.total_pages = Math.ceil(this.total / this.per_page);
   },
+  mounted() {
+    this.$refs.search.focus();
+  }
 };
 </script>
 <style lang="scss">
