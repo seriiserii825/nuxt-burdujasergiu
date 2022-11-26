@@ -1,5 +1,5 @@
 <template>
-  <div class="blogs" v-if="posts.length > 0" :style="`justify-content: ${align}`">
+  <div class="blogs" v-if="posts.data.data && posts.data.data.length > 0" :style="`justify-content: ${align}`">
     <div class="blogs__item" v-for="post in posts.data.data" :key="post.id">
       <blog-component
         :title="post.title"
@@ -49,7 +49,7 @@ export default {
 <style lang="scss">
 .blogs {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(26rem, 1fr));
   justify-content: center;
   grid-gap: 2rem;
 }

@@ -1,7 +1,7 @@
 <template>
   <div class="blog">
     <div class="blog__img">
-      <img :src="img_url" alt="">
+      <img :src="img_url" alt="" />
     </div>
     <div class="blog__content">
       <h2 class="blog__title">{{ title }}</h2>
@@ -12,18 +12,20 @@
 <script>
 export default {
   props: ["img_url", "title", "date"],
-}
+};
 </script>
 <style lang="scss">
 .blog {
   position: relative;
-  transition: all .4s;
+  transition: all 0.4s;
+  height: 100%;
+  background: #111111;
   outline: 2px solid #444;
   border-radius: 0.5rem;
   cursor: pointer;
   overflow: hidden;
   &:hover {
-    box-shadow: 4px 8px 16px -4px rgba(0, 0, 0, .3);
+    box-shadow: 4px 8px 16px -4px rgba(0, 0, 0, 0.3);
     transform: scale(1.1);
     .blog__img {
       img {
@@ -39,7 +41,7 @@ export default {
     align-items: center;
     height: 24rem;
     background-color: #000;
-    transition: all .4s;
+    transition: all 0.4s;
     img {
       width: 60%;
       height: 60%;
@@ -49,7 +51,6 @@ export default {
   &__content {
     padding: 2rem;
     color: white;
-    background: #111111;
   }
   &__title {
     margin-bottom: 1rem;
