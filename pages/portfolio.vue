@@ -1,13 +1,13 @@
 <template>
   <div class="page-portfolio">
-    <section-header title="Все работы" />
+    <section-header title="Все работы"/>
     <div class="page-portfolio__wrap">
-      <div class="page-portfolio__filter" v-if="post_categories && post_categories.length">
-        <btn v-for="category in post_categories" :key="category.id">
+      <div class="page-portfolio__filter" v-if="taxonomies && taxonomies.length">
+        <btn v-for="category in taxonomies" :key="category.id">
           <span>{{ category.title }}</span>
         </btn>
       </div>
-      <PortfoliosComponent />
+      <PortfoliosComponent/>
     </div>
   </div>
 </template>
@@ -17,19 +17,20 @@ import Btn from "~/components/ui/Btn";
 import SectionHeader from "~/components/ui/SectionHeader";
 
 export default {
-  components: { SectionHeader, Btn, PortfoliosComponent },
-  async asyncData({ store }) {
+  components: {SectionHeader, Btn, PortfoliosComponent},
+  async asyncData({store}) {
     try {
-      let data = await store.state["post-categories"].data;
+      let data = await store.state["taxonomy"].data;
       if (!data.length) {
-        await store.dispatch("post-categories/fetchData");
-        data = await store.state["post-categories"].data;
+        await store.dispatch("taxonomy/fetchData");
+        data = await store.state["taxonomy"].data;
       }
+      console.log(data, 'data')
       return {
-        post_categories: data,
+        taxonomies: data.data,
       };
     } catch (e) {
-      return { error: e.response.data.error.message };
+      return {error: e.response.data.error.message};
     }
   },
 };
@@ -41,6 +42,9 @@ export default {
   }
   &__filter {
     margin-bottom: 6rem;
+  }
+  .btn {
+    margin-right: 1rem;
   }
 }
 </style>
