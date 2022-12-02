@@ -19,10 +19,10 @@ export default {
 <style lang="scss">
 @import "~/assets/scss/partials/variables.scss";
 .btn {
+  position: relative;
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  padding: 0 3rem;
   height: 3rem;
   font-size: 1.5rem;
   text-transform: uppercase;
@@ -41,6 +41,13 @@ export default {
   }
   &.dark {
     background-color: #000;
+  }
+  span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1.4rem;
+    height: 100%;
   }
 }
 </style>

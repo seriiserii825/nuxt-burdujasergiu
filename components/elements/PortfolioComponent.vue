@@ -1,9 +1,9 @@
 <template>
   <div class="portfolio">
-    <img src="/images/portfolio.jpg" alt="">
+    <img :src="`${siteUrl}${item.image}`" alt="">
     <div class="portfolio__content">
-      <h2 class="portfolio__title">Segalerba</h2>
-      <div class="portfolio__type">Immobile</div>
+      <h2 class="portfolio__title">{{ item.title }}</h2>
+      <div class="portfolio__type">{{ item.taxonomy.title }}</div>
       <btn size="small" bg="dark">
         <router-link to="/">Посмотреть проект</router-link>
       </btn>
@@ -14,7 +14,18 @@
 import Btn from "~/components/ui/Btn";
 
 export default {
-  components: {Btn}
+  props: {
+    item: {
+      type: Object,
+      required: true
+    }
+  },
+  computed: {
+    siteUrl() {
+      return process.env.siteUrl;
+    },
+  },
+  components: {Btn},
 }
 </script>
 <style lang="scss">

@@ -3,11 +3,18 @@
     <section-header title="Все работы"/>
     <div class="page-portfolio__wrap">
       <div class="page-portfolio__filter" v-if="taxonomies && taxonomies.length">
-        <btn v-for="category in taxonomies" :key="category.id">
-          <span>{{ category.title }}</span>
+        <btn
+            v-for="category in taxonomies"
+            :key="category.id"
+        >
+          <span
+              @click="filterByTaxonomy(category.id)"
+          >{{ category.title }}</span>
         </btn>
       </div>
-      <PortfoliosComponent/>
+      <div class="portfolios">
+        <PortfolioComponent v-for="item in portfolios" :item="item" :key="item.id"/>
+      </div>
     </div>
   </div>
 </template>
@@ -15,22 +22,29 @@
 import PortfoliosComponent from "~/components/elements/PortfoliosComponent";
 import Btn from "~/components/ui/Btn";
 import SectionHeader from "~/components/ui/SectionHeader";
+import PortfolioComponent from "@/elements/PortfolioComponent";
 
 export default {
-  components: {SectionHeader, Btn, PortfoliosComponent},
+  components: {PortfolioComponent, SectionHeader, Btn, PortfoliosComponent},
   async asyncData({store}) {
     try {
+      await store.dispatch("taxonomy/fetchData");
+      await store.dispatch("portfolio/fetchData", {taxonomy_id: 0});
       let data = await store.state["taxonomy"].data;
-      if (!data.length) {
-        await store.dispatch("taxonomy/fetchData");
-        data = await store.state["taxonomy"].data;
-      }
-      console.log(data, 'data')
+      let portfolios = await store.state["portfolio"].data;
+
       return {
         taxonomies: data.data,
+        portfolios: portfolios.data
       };
     } catch (e) {
       return {error: e.response.data.error.message};
+    }
+  },
+  methods: {
+    async filterByTaxonomy(id) {
+      await this.$store.dispatch("portfolio/fetchData", {taxonomy_id: id});
+      this.portfolios = await this.$store.state["portfolio"].data.data;
     }
   },
 };
@@ -46,5 +60,10 @@ export default {
   .btn {
     margin-right: 1rem;
   }
+}
+.portfolios {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(24rem, 1fr));
+  grid-gap: 4rem;
 }
 </style>
