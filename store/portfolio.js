@@ -14,9 +14,7 @@ export const mutations = {
 export const actions = {
     async fetchData({commit}, payload) {
         try {
-            const data = await this.$axios.$get(
-                process.env.apiUrl + "/portfolio?taxonomy_id=" + payload.taxonomy_id
-            );
+            const data = await this.$axios.$get(process.env.apiUrl + "/portfolio");
             commit("setData", data);
         } catch (e) {
             console.log(e, "e");

@@ -1,27 +1,24 @@
 <template>
-  <div class="portfolios">
-    <PortfolioComponent v-for="item in current_count" :key="item" />
+  <div class="portfolios" v-if="portfolios && portfolios.length">
+    <PortfolioComponent v-for="item in portfolios" :item="item" :key="item"/>
   </div>
 </template>
 <script>
 import PortfolioComponent from "~/components/elements/PortfolioComponent";
 
 export default {
-  props: {
-    count: {
-      type: Number,
-      default: 10
-    }
-  },
-  data() {
-    return {
-      current_count: 0
+  async asyncData({store}) {
+    try {
+      await store.dispatch("portfolio/fetchData");
+      const portfolios = store.state["portfolio"].data;
+      return {
+        portfolios: portfolios ? portfolios.data.data : []
+      };
+    } catch (e) {
+      return {error: e.response.data.error.message};
     }
   },
   components: {PortfolioComponent},
-  mounted() {
-    this.current_count = this.count;
-  }
 }
 </script>
 <style lang="scss">
