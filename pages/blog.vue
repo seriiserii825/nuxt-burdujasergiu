@@ -59,7 +59,7 @@ export default {
     try {
       await store.dispatch("post-categories/fetchData");
       let data = await store.state["post-categories"];
-      const post_category_id = await store.state["post"].post_category_id;
+      const post_category_id = store.state["post"].post_category_id;
       await store.dispatch("post/fetchData", {
         limit: 4,
         offset: 0,
@@ -78,7 +78,7 @@ export default {
   methods: {
     async goToPage(page) {
       this.page = page;
-      const post_category_id = await this.$store.state["post"].post_category_id;
+      const post_category_id = this.$store.state["post"].post_category_id;
       await this.$store.dispatch("post/fetchData", {
         limit: this.per_page,
         offset: (page - 1) * this.per_page,
@@ -102,6 +102,9 @@ export default {
     load_posts() {
       return this.$store.state["post"].load_posts;
     },
+    total_pages(){
+     return Math.ceil(this.total / this.per_page);
+    }
   },
   watch: {
     load_posts(val) {
@@ -109,12 +112,8 @@ export default {
       this.page = 1;
       this.total = this.$store.state["post"].data.total;
       this.per_page = this.$store.state["post"].limit;
-      this.total_pages = Math.ceil(this.total / this.per_page);
       this.$store.dispatch("post/setLoadPosts", false);
     },
-  },
-  created() {
-    this.total_pages = Math.ceil(this.total / this.per_page);
   },
   mounted() {
     this.$refs.search.focus();

@@ -14,7 +14,26 @@
         </btn>
       </div>
       <div class="portfolios">
-        <PortfolioComponent v-for="item in portfolios" :item="item" :key="item.id"/>
+        <div class="portfolios__wrap">
+          <PortfolioComponent v-for="item in portfolios" :item="item" :key="item.id"/>
+        </div>
+
+        <client-only>
+          <vue-paginate
+              v-if="total_pages > 1"
+              :hide-prev-next="true"
+              :page-count="total_pages"
+              :page-range="5"
+              :margin-pages="2"
+              :click-handler="goToPage"
+              :prev-text="'<<'"
+              :next-text="'>>'"
+              :container-class="'pagination'"
+              :page-class="'page-item'"
+              v-model="page"
+          >
+          </vue-paginate>
+        </client-only>
       </div>
     </div>
   </div>
@@ -24,30 +43,64 @@ import PortfoliosComponent from "~/components/elements/PortfoliosComponent";
 import Btn from "~/components/ui/Btn";
 import SectionHeader from "~/components/ui/SectionHeader";
 import PortfolioComponent from "@/elements/PortfolioComponent";
+import VuePaginate from "vuejs-paginate/src/components/Paginate.vue";
 
 export default {
-  components: {PortfolioComponent, SectionHeader, Btn, PortfoliosComponent},
+  components: {
+    PortfolioComponent, SectionHeader, Btn, PortfoliosComponent,
+    VuePaginate,
+  },
+  data() {
+    return {
+      page: 1,
+      per_page: 4,
+      taxonomy_id: 0
+    }
+  },
   async asyncData({store}) {
     try {
       await store.dispatch("taxonomy/fetchData");
-      await store.dispatch("portfolio/fetchData", {taxonomy_id: 0});
+      await store.dispatch("portfolio/fetchData", {taxonomy_id: 0, offset: 0, limit: 4});
       let data = store.state["taxonomy"].data;
       let portfolios = store.state["portfolio"].data;
 
       return {
         taxonomies: data.data,
-        portfolios: portfolios.data
+        portfolios: portfolios.data ? portfolios.data : [],
+        total: portfolios.total
       };
     } catch (e) {
-      return {error: e.response.data.error.message};
+      console.log(e, 'e')
+      return {error: e};
     }
   },
   methods: {
     async filterByTaxonomy(id) {
-      await this.$store.dispatch("portfolio/fetchData", {taxonomy_id: id});
+      this.taxonomy_id = id;
+      this.page = 1;
+      await this.$store.dispatch("portfolio/fetchData", {
+        limit: this.per_page,
+        offset: 0,
+        taxonomy_id: id
+      });
       this.portfolios = await this.$store.state["portfolio"].data.data;
-    }
+      this.total = this.$store.state["portfolio"].data.total;
+    },
+    async goToPage(page) {
+      this.page = page;
+      await this.$store.dispatch("portfolio/fetchData", {
+        limit: this.per_page,
+        offset: (page - 1) * this.per_page,
+        taxonomy_id: this.taxonomy_id
+      });
+      this.portfolios = this.$store.state["portfolio"].data.data;
+    },
   },
+  computed: {
+    total_pages() {
+      return Math.ceil(this.total / this.per_page);
+    }
+  }
 };
 </script>
 <style lang="scss">
@@ -63,8 +116,10 @@ export default {
   }
 }
 .portfolios {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(24rem, 1fr));
-  grid-gap: 4rem;
+  &__wrap {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(24rem, 1fr));
+    grid-gap: 4rem;
+  }
 }
 </style>

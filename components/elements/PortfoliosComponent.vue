@@ -21,10 +21,3 @@ export default {
   components: {PortfolioComponent},
 }
 </script>
-<style lang="scss">
-.portfolios {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(30rem, 32rem));
-  grid-gap: 4rem;
-}
-</style>
