@@ -1,9 +1,9 @@
 <template>
-  <div class="single-post">
+  <div class="single-post" v-if="title && text">
     <div class="section-header">
       <h2 class="section-header__title" v-if="title">{{ title }}</h2>
     </div>
-    <div class="single-post__content">
+    <div class="single-post__content" v-if="text">
       <client-only>
         <vue-simple-markdown :source="text"></vue-simple-markdown>
       </client-only>
@@ -13,30 +13,14 @@
 
 <script>
 export default {
-  data() {
-    return {
-      title: "",
-      text: "",
-      slug: null,
-      data: null
+  async asyncData({store, params}) {
+    try {
+      await store.dispatch("post/fetchSingle", {slug: params.slug})
+      const {title, text} = store.state.post.data.data;
+      return {title, text};
+    }catch (e) {
+      console.log(e, 'e')
     }
   },
-  methods: {
-    getPost() {
-      this.$axios.get(`/post/${this.slug}`)
-          .then(res => {
-            this.data = res.data.data;
-            this.title = this.data.title;
-            this.text = this.data.text;
-          })
-          .catch(err => {
-            console.log(err)
-          })
-    }
-  },
-  created() {
-    this.slug = this.$route.params.slug
-    this.getPost()
-  }
 }
 </script>
