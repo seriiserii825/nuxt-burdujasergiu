@@ -111,6 +111,26 @@ export default {
     }
   },
   computed: {
+    head() {
+      return {
+        title: this.siteTitle + " | Портфолио",
+        meta: [
+          {
+            hid: 'description',
+            name: 'description',
+            content: 'С помощью грамотно составленного портфолио работодатель сможет объективно оценить уровень профессионализма потенциального работника.'
+          }
+        ]
+      }
+    },
+    computed: {
+      siteTitle() {
+        return this.$store.state.site_title;
+      }
+    },
+    siteTitle() {
+      return this.$store.state.site_title;
+    } ,
     total_pages() {
       return Math.ceil(this.total / this.per_page);
     }

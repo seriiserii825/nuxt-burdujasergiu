@@ -48,6 +48,18 @@ export default {
     VuePaginate,
   },
   layout: "default",
+  head() {
+    return {
+      title: this.siteTitle + " | Блог",
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'Блог – это личный дневник в Интернете. Блог нужен для того, чтобы писать каждый день или раз в неделю о своей личной жизни, работе или хобби. Чтобы публиковать мысли, заметки, фотографии и видеозаписи.'
+        }
+      ]
+    }
+  },
   data() {
     return {
       page: 1,
@@ -100,6 +112,9 @@ export default {
     }
   },
   computed: {
+    siteTitle() {
+      return this.$store.state.site_title;
+    },
     load_posts() {
       return this.$store.state["post"].load_posts;
     },

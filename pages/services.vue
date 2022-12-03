@@ -18,9 +18,24 @@ import services_text from "~/text/services";
 export default {
   components: {Service, SectionHeader},
   layout: 'default',
+  head() {
+    return {
+      title: this.siteTitle + " | Услуги",
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'Vue (произносится /vjuː/, примерно как view) — это прогрессивный фреймворк для создания пользовательских интерфейсов. В отличие от фреймворков-монолитов'
+        }
+      ]
+    }
+  },
   computed: {
     servicesText() {
       return services_text;
+    },
+    siteTitle(){
+      return this.$store.state.site_title;
     }
   }
 }

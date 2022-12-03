@@ -15,6 +15,13 @@ import Logo from "../components/Logo";
 import Footer from "../components/Footer";
 
 export default {
+  head() {
+    return {
+      link: [
+        {rel: "canonical", href: "burdujasergiu.com" + this.$route.path}
+      ]
+    }
+  },
   components: {
     Menu,
     Logo,

@@ -28,6 +28,18 @@ import Btn from "@/ui/Btn";
 import SectionHeader from "@/ui/SectionHeader";
 
 export default {
+  head() {
+    return {
+      title: this.siteTitle + " | Главная",
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: ' На моем сайте фрилансера веб-разработчика в портфолио представлены проекты, которые я разработал в течение последних шести лет как в сотрудничестве с веб-студиями так и для частных клиентов, а также несколько личных проектов.'
+        }
+      ]
+    }
+  },
   components: {
     PortfoliosComponent,
     Btn,
@@ -37,6 +49,11 @@ export default {
     Intro,
   },
   layout: "default",
+  computed: {
+    siteTitle() {
+      return this.$store.state.site_title;
+    }
+  },
   async asyncData({store}) {
     try {
       await store.dispatch("post/fetchData", {
