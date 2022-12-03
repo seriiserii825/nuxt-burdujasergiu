@@ -42,9 +42,9 @@
   </div>
 </template>
 <script>
-import PortfoliosComponent from "~/components/elements/PortfoliosComponent";
-import Btn from "~/components/ui/Btn";
-import SectionHeader from "~/components/ui/SectionHeader";
+import PortfoliosComponent from "@/elements/PortfoliosComponent";
+import Btn from "@/ui/Btn";
+import SectionHeader from "@/ui/SectionHeader";
 import PortfolioComponent from "@/elements/PortfolioComponent";
 import VuePaginate from "vuejs-paginate/src/components/Paginate.vue";
 

@@ -5,7 +5,7 @@
       <h2 class="portfolio__title">{{ item.title }}</h2>
       <div class="portfolio__type">{{ item.taxonomy.title }}</div>
       <btn size="small" bg="dark">
-        <router-link to="/">Посмотреть</router-link>
+        <router-link :to="`/portfolio/${item.slug}`">Посмотреть</router-link>
       </btn>
     </div>
   </div>
