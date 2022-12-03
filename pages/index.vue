@@ -1,20 +1,20 @@
 <template>
   <div class="home">
-    <Intro />
-    <section-header title="Обо мне" />
-    <About />
-    <section-header title="Последние посты" />
+    <Intro/>
+    <section-header title="Обо мне"/>
+    <About/>
+    <section-header title="Последние посты"/>
     <div class="last-posts">
-      <blogs-component :count="3" align="center" />
+      <blogs-component :posts="posts" align="center"/>
       <div class="last-posts__btn">
         <btn>
           <router-link to="/blog">Посмотреть все посты</router-link>
         </btn>
       </div>
     </div>
-    <section-header title="Последние работы порртфолио" />
+    <section-header title="Последние работы порртфолио"/>
     <div class="last-portfolio">
-      <PortfoliosComponent :count="3" />
+      <PortfoliosComponent v-if="portfolios && portfolios.length" :portfolios="portfolios"/>
     </div>
   </div>
 </template>
@@ -37,6 +37,24 @@ export default {
     Intro,
   },
   layout: "default",
+  async asyncData({store}) {
+    try {
+      await store.dispatch("post/fetchData", {
+        limit: 5,
+        offset: 0,
+        post_category_id: 0
+      });
+      await store.dispatch("portfolio/fetchData", {taxonomy_id: 0, offset: 0, limit: 4});
+      const posts = await store.state["post"];
+      let portfolios = store.state["portfolio"];
+      return {
+        posts: posts.data.data,
+        portfolios: portfolios.data.data
+      };
+    } catch (e) {
+      return {error: e.response.data.error.message};
+    }
+  },
 };
 </script>
 <style lang="scss">

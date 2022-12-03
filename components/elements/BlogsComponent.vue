@@ -55,7 +55,7 @@ export default {
 <style lang="scss">
 .blogs {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(26rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(26rem, 1fr));
   justify-content: center;
   grid-gap: 2rem;
 }
