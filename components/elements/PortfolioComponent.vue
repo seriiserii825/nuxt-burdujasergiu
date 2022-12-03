@@ -32,7 +32,7 @@ export default {
 .portfolio {
   position: relative;
   padding: 3rem;
-  height: 30rem;
+  height: 18rem;
   overflow: hidden;
   &:hover {
     &::before {
@@ -74,7 +74,7 @@ export default {
   }
   &__content {
     position: relative;
-    padding-top: 10rem;
+    padding-top: 3%;
     z-index: 3;
   }
   &__title {
