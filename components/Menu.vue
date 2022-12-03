@@ -5,12 +5,25 @@
     li
       nuxt-link(to="/about") Обо мне
     li
-      nuxt-link(to="/blog") Блог
+      nuxt-link(to="/blog" :class="{'nuxt-link-exact-active': isRouteActive('post')}") Блог
     li
       nuxt-link(to="/services") Услуги
     li
-      nuxt-link(to="/portfolio") Портфолио
+      nuxt-link(to="/portfolio" :class="{'nuxt-link-exact-active': isRouteActive('portfolio')}") Портфолио
 </template>
+<script>
+export default {
+  methods: {
+    isRouteActive(str) {
+      const router_path = this.$route.path;
+      return router_path.includes(str);
+    },
+  },
+  mounted() {
+    this.isRouteActive('blog');
+  }
+}
+</script>
 <style lang="scss">
 @import "~/assets/scss/partials/variables.scss";
 .menu {
