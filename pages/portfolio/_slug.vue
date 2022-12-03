@@ -5,8 +5,8 @@
     </div>
     <div class="single-post__content">
       <div class="single-post__navigation">
-        <nuxt-link class="single-post__link" to="/">Назад</nuxt-link>
-        <nuxt-link class="single-post__link" :to="`${url}`">Посмотреть сайт</nuxt-link>
+        <span class="single-post__link" @click="goBack">Назад</span>
+        <a class="single-post__link" target="_blank" :href="`${url}`">Посмотреть сайт</a>
       </div>
       <div class="single-post__img">
         <img :src="`${siteUrl}${image}`" alt="">
@@ -28,6 +28,9 @@ export default {
     }
   },
   methods: {
+    goBack() {
+      this.$router.go(-1);
+    },
     getPost() {
       this.$axios.get(`/portfolio/${this.slug}`)
           .then(res => {
@@ -53,7 +56,8 @@ export default {
 }
 </script>
 <style lang="scss">
-a.single-post__link {
+a.single-post__link,
+.single-post__link{
   display: inline-block;
   margin-bottom: 5rem;
   margin-right: 2rem;
@@ -65,6 +69,7 @@ a.single-post__link {
   color: white;
   background: black;
   border: 2px solid #d2570a;
+  cursor: pointer;
   transition: all 0.4s;
   &:hover {
     color: white;
