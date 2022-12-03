@@ -2,6 +2,9 @@
   <div class="search-popup">
     <header class="search-popup__header">
       <input v-model="search" @input="onInput" ref="search" type="text" placeholder="Search...">
+      <button @click="hidePopup">
+        <img src="/svg/close.svg" alt="">
+      </button>
     </header>
     <ul v-if="search_list.length" class="search-popup__list">
       <li @click="hidePopup" v-for="item in search_list" :key="item.id">
@@ -55,16 +58,26 @@ export default {
   height: 96%;
   z-index: 9999999;
   background: #000;
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6rem;
+  }
   input {
     display: block;
-    margin-bottom: 6rem;
-    width: 100%;
+    width: 80%;
     height: 6rem;
     font-size: 2rem;
     text-indent: 2rem;
     color: white;
     background: transparent;
     border: 1px solid orangered;
+  }
+  button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
   }
   li {
     margin-bottom: 2rem;
