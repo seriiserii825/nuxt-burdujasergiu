@@ -6,9 +6,9 @@
     <div class="single-post__content">
       <div class="single-post__navigation">
         <span class="single-post__link" @click="goBack">Назад</span>
-        <a class="single-post__link" target="_blank" :href="`${url}`">Посмотреть сайт</a>
+        <a class="single-post__link" v-if="url" target="_blank" :href="`${url}`">Посмотреть сайт</a>
       </div>
-      <div class="single-post__img">
+      <div class="single-post__img" v-if="image">
         <img :src="`${siteUrl}${image}`" alt="">
       </div>
     </div>
@@ -17,47 +17,30 @@
 
 <script>
 export default {
-  data() {
-    return {
-      title: "",
-      text: "",
-      slug: null,
-      data: null,
-      url: "",
-      image: ""
+  async asyncData({store, params}) {
+    try {
+      await store.dispatch("portfolio/fetchSingle", {slug: params.slug})
+      const {title, slug, url, image} = store.state.portfolio.data.data;
+      return {title, slug, url, image};
+    }catch (e) {
+    	console.log(e, 'e')
     }
   },
   methods: {
     goBack() {
       this.$router.go(-1);
     },
-    getPost() {
-      this.$axios.get(`/portfolio/${this.slug}`)
-          .then(res => {
-            this.data = res.data.data;
-            this.title = this.data.title;
-            this.url = this.data.url;
-            this.image = this.data.image;
-          })
-          .catch(err => {
-            console.log(err)
-          })
-    }
   },
   computed: {
     siteUrl() {
       return process.env.siteUrl;
     }
   },
-  created() {
-    this.slug = this.$route.params.slug
-    this.getPost()
-  }
 }
 </script>
 <style lang="scss">
 a.single-post__link,
-.single-post__link{
+.single-post__link {
   display: inline-block;
   margin-bottom: 5rem;
   margin-right: 2rem;
