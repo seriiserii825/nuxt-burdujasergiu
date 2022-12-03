@@ -17,6 +17,18 @@
 
 <script>
 export default {
+  head() {
+    return {
+      title: this.siteTitle + " | Портфолио",
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'Текс для блога'
+        }
+      ]
+    }
+  },
   async asyncData({store, params}) {
     try {
       await store.dispatch("portfolio/fetchSingle", {slug: params.slug})
@@ -34,7 +46,10 @@ export default {
   computed: {
     siteUrl() {
       return process.env.siteUrl;
-    }
+    },
+    siteTitle() {
+      return this.$store.state.site_title;
+    },
   },
 }
 </script>
