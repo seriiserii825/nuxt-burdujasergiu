@@ -3,6 +3,7 @@
     <section-header title="Все работы"/>
     <div class="page-portfolio__wrap">
       <div class="page-portfolio__filter" v-if="taxonomies && taxonomies.length">
+        <btn><span @click="filterByTaxonomy(0)">All</span></btn>
         <btn
             v-for="category in taxonomies"
             :key="category.id"
@@ -30,8 +31,8 @@ export default {
     try {
       await store.dispatch("taxonomy/fetchData");
       await store.dispatch("portfolio/fetchData", {taxonomy_id: 0});
-      let data = await store.state["taxonomy"].data;
-      let portfolios = await store.state["portfolio"].data;
+      let data = store.state["taxonomy"].data;
+      let portfolios = store.state["portfolio"].data;
 
       return {
         taxonomies: data.data,

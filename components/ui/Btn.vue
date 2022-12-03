@@ -23,6 +23,7 @@ export default {
   display: inline-flex;
   justify-content: center;
   align-items: center;
+  padding: 0 2rem;
   height: 3rem;
   font-size: 1.5rem;
   text-transform: uppercase;
