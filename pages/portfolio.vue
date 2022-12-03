@@ -2,6 +2,9 @@
   <div class="page-portfolio">
     <section-header title="Все работы"/>
     <div class="page-portfolio__wrap">
+      <div class="admin-search">
+        <input ref="search" type="text" placeholder="Search..." v-model="search" @input="onSearch"/>
+      </div>
       <div class="page-portfolio__filter" v-if="taxonomies && taxonomies.length">
         <btn><span @click="filterByTaxonomy(0)">All</span></btn>
         <btn
@@ -54,7 +57,8 @@ export default {
     return {
       page: 1,
       per_page: 4,
-      taxonomy_id: 0
+      taxonomy_id: 0,
+      search: ""
     }
   },
   async asyncData({store}) {
@@ -95,6 +99,16 @@ export default {
       });
       this.portfolios = this.$store.state["portfolio"].data.data;
     },
+    async onSearch() {
+      await this.$store.dispatch("portfolio/fetchData", {
+        limit: this.per_page,
+        offset: (this.page - 1) * this.per_page,
+        taxonomy_id: this.taxonomy_id,
+        search: this.search
+      });
+      this.portfolios = this.$store.state["portfolio"].data.data;
+      this.total = this.$store.state["portfolio"].data.total;
+    }
   },
   computed: {
     total_pages() {
@@ -118,7 +132,7 @@ export default {
 .portfolios {
   &__wrap {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(24rem, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(33rem, 1fr));
     grid-gap: 4rem;
   }
 }

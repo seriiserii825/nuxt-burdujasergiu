@@ -4,8 +4,9 @@
     <div class="page-blog__wrap">
       <main class="page-blog__content">
         <div>
-          <div class="admin-search"><input ref="search" type="text" placeholder="Search..." v-model="search"
-                                           @input="onSearch"/></div>
+          <div class="admin-search">
+            <input ref="search" type="text" placeholder="Search..." v-model="search" @input="onSearch"/>
+          </div>
           <blogs-component v-if="posts" :posts="posts"/>
         </div>
         <client-only>
@@ -102,8 +103,8 @@ export default {
     load_posts() {
       return this.$store.state["post"].load_posts;
     },
-    total_pages(){
-     return Math.ceil(this.total / this.per_page);
+    total_pages() {
+      return Math.ceil(this.total / this.per_page);
     }
   },
   watch: {
