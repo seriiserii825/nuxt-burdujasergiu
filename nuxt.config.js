@@ -1,6 +1,10 @@
 import { resolve } from "path";
 
 export default {
+  server: {
+    host: "0.0.0.0", // default: localhost
+    port: 3000, // optional: explicitly set the port
+  },
   // Global page headers: https://go.nuxtjs.dev/config-head
   hooks: {
     render: {
@@ -75,7 +79,9 @@ export default {
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  build: {
+    transpile: ["jiti", "@nuxt/utils"],
+  },
   auth: {
     strategies: {
       laravelJWT: {
