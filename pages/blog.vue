@@ -72,6 +72,7 @@ export default {
     try {
       await store.dispatch("post-categories/fetchData");
       let data = await store.state["post-categories"];
+      console.log("data", data);
       const post_category_id = store.state["post"].post_category_id;
       await store.dispatch("post/fetchData", {
         limit: 4,
@@ -79,6 +80,7 @@ export default {
         post_category_id: post_category_id
       });
       const posts = await store.state["post"];
+      console.log("posts", posts);
       return {
         post_categories: data,
         posts: posts.data.data,

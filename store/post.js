@@ -38,6 +38,7 @@ export const actions = {
       const data = await this.$axios.$get(
         `${process.env.apiUrl}/post?limit=${limit}&offset=${offset}&post_category_id=${post_category_id}${search_url}`
       );
+      console.log(data, "data");
       commit("setData", data);
       commit("setLimit", limit);
       commit("setOffset", offset);

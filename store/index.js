@@ -1,5 +1,5 @@
 export const state = () => ({
-  server_url: process.env.BASE_URL || "https://localhost:8088",
+  server_url: process.env.BASE_URL || "http://localhost:8080",
   isVisibleSidebar: true,
   isVisibleAddMedia: false,
   isVisibleNotify: false,

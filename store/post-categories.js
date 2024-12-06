@@ -17,6 +17,7 @@ export const actions = {
       const data = await this.$axios.$get(
         process.env.apiUrl + "/post-category"
       );
+      console.log(data, "data");
       commit("setData", data);
     } catch (e) {
       console.log(e, "e");
