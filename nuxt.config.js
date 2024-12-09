@@ -3,7 +3,7 @@ import { resolve } from "path";
 export default {
   server: {
     host: "0.0.0.0", // default: localhost
-    port: 3000, // optional: explicitly set the port
+    port: 3002, // optional: explicitly set the port
   },
   // Global page headers: http://go.nuxtjs.dev/config-head
   hooks: {
